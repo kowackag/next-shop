@@ -123,18 +123,7 @@ export const Product = () => {
                 <legend className="mb-1 text-sm font-medium">Color</legend>
 
                 <div className="flex flex-wrap gap-1">
-                  <label htmlFor="color_tt" className="cursor-pointer">
-                    <input
-                      type="radio"
-                      name="color"
-                      id="color_tt"
-                      className="peer sr-only"
-                    />
 
-                    <span className="group inline-block rounded-full border px-3 py-1 text-xs font-medium peer-checked:bg-black peer-checked:text-white">
-                      Texas Tea
-                    </span>
-                  </label>
 
                   <label htmlFor="color_fr" className="cursor-pointer">
                     <input
