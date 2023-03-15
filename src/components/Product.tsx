@@ -1,6 +1,13 @@
+import Color from "./Color/Color";
 import Size from "./Size/Size";
 
-export const Product = () => {
+interface ProductProps {
+  colorName: string[];
+}
+
+const colorsArr = ["red", "blue", "black"];
+
+export const Product = ({ colorName }: ProductProps) => {
   return (
     <section>
       <div className="relative mx-auto max-w-screen-xl px-4 py-8">
@@ -121,41 +128,15 @@ export const Product = () => {
             <form className="mt-8">
               <fieldset>
                 <legend className="mb-1 text-sm font-medium">Color</legend>
-
                 <div className="flex flex-wrap gap-1">
-
-
-                  <label htmlFor="color_fr" className="cursor-pointer">
-                    <input
-                      type="radio"
-                      name="color"
-                      id="color_fr"
-                      className="peer sr-only"
-                    />
-
-                    <span className="group inline-block rounded-full border px-3 py-1 text-xs font-medium peer-checked:bg-black peer-checked:text-white">
-                      Fiesta Red
-                    </span>
-                  </label>
-
-                  <label htmlFor="color_cb" className="cursor-pointer">
-                    <input
-                      type="radio"
-                      name="color"
-                      id="color_cb"
-                      className="peer sr-only"
-                    />
-
-                    <span className="group inline-block rounded-full border px-3 py-1 text-xs font-medium peer-checked:bg-black peer-checked:text-white">
-                      Cobalt Blue
-                    </span>
-                  </label>
+                  {colorsArr.map((item, ind) => (
+                    <Color key={`${item}_${ind}`} colorName={item} id={ind} />
+                  ))}
                 </div>
               </fieldset>
 
               <fieldset className="mt-4">
                 <legend className="mb-1 text-sm font-medium">Size</legend>
-
                 <div className="flex flex-wrap gap-1">
                   <Size text="xs" />
                   <Size text="s" />
