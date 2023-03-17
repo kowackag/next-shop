@@ -5,7 +5,7 @@ interface ColorProps {
   id: number;
 }
 
-const Color = ({ colorName, id }: ColorProps) => {
+export const Color = ({ colorName, id }: ColorProps) => {
   return (
     <label htmlFor={`color_${id}`} className="cursor-pointer">
       <input
@@ -21,4 +21,3 @@ const Color = ({ colorName, id }: ColorProps) => {
   );
 };
 
-export default Color;
