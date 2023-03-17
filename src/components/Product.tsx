@@ -1,7 +1,6 @@
 import { Color } from "./Color/Color";
 import { Size } from "./Size/Size";
 import { PriceBox } from "./PriceBox/PriceBox";
-import Image from "next/image";
 import { ImageBox } from "./ImageBox/ImageBox";
 
 interface ProductProps {
@@ -23,7 +22,7 @@ export const Product = ({
 }: ProductProps) => {
   return (
     <section>
-      <div className="relative mx-auto max-w-screen-xl px-4 py-8">
+      <div className="relative mx-auto max-w-screen-xl px-4 py-8 text-zinc-800">
         <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
           <ImageBox />
           <div className="sticky top-0">
@@ -42,9 +41,9 @@ export const Product = ({
               </button>
             </div>
 
-            <form className="mt-8">
+            <form className="mt-8 mb-4 text-zinc-800">
               <fieldset>
-                <legend className="mb-1 text-sm font-medium">Color</legend>
+                <legend className="mb-2 font-medium">Color</legend>
                 <div className="flex flex-wrap gap-1">
                   {colors.map((item, ind) => (
                     <Color key={`${item}_${ind}`} colorName={item} id={ind} />
@@ -52,8 +51,8 @@ export const Product = ({
                 </div>
               </fieldset>
 
-              <fieldset className="mt-4">
-                <legend className="mb-1 text-sm font-medium">Size</legend>
+              <fieldset className="mt-8 mb-4">
+                <legend className="mb-2 font-medium ">Size</legend>
                 <div className="flex flex-wrap gap-1">
                   <Size text="xs" />
                   <Size text="s" />

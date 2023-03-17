@@ -10,7 +10,9 @@ export const PriceBox = ({ price, newPrice, discount }: PriceBoxProps) => {
   return (
     <div className="py-4 my-4">
       {discount && (
-        <span className="text-l bg-red-700 text-white p-1">{discount}</span>
+        <span className="text-l rounded bg-red-700 text-white p-1">
+          {discount}
+        </span>
       )}
       <div className="flex justify-start mt-2">
         <p

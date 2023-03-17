@@ -14,10 +14,9 @@ export const Color = ({ colorName, id }: ColorProps) => {
         id={`color_${id}`}
         className="peer sr-only"
       />
-      <span className="group inline-block rounded-full border px-3 py-1 text-xs font-medium peer-checked:bg-black peer-checked:text-white">
+      <span className="group inline-block rounded border px-3 py-1 text-sm font-medium peer-checked:bg-zinc-800 peer-checked:text-white">
         {colorName}
       </span>
     </label>
   );
 };
-
