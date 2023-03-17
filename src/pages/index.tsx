@@ -34,7 +34,7 @@ const Product = ({ data }: ProductProps) => {
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-slate-600 ">
+    <div className="flex flex-col min-h-screen bg-slate-50 ">
       <Header />
       <Main>
         <Product data={DATA} />

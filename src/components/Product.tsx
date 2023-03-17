@@ -64,10 +64,7 @@ export const Product = ({
 
               <div className="mt-8 flex gap-4">
                 <div>
-                  <label htmlFor="quantity" className="sr-only">
-                    Qty
-                  </label>
-
+                  <label htmlFor="quantity" className="sr-only"></label>
                   <input
                     type="number"
                     id="quantity"
@@ -79,7 +76,7 @@ export const Product = ({
 
                 <button
                   type="submit"
-                  className="block rounded bg-green-600 px-5 py-3 text-xs font-medium text-white hover:bg-green-500"
+                  className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white"
                 >
                   Add to Cart
                 </button>

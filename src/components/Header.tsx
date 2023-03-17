@@ -14,7 +14,7 @@ export const Header = () => {
   ];
 
   return (
-    <header className="px-4 py-2 bg-slate-50 text-2xl text-zinc-800 flex justify-between items-center shadow-md">
+    <header className="px-4 py-4 bg-slate-50 text-2xl text-zinc-800 flex justify-between items-center shadow-md">
       <div>
         <p>Shops</p>
       </div>
