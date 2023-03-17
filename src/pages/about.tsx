@@ -4,7 +4,7 @@ import { Header } from "src/components/Header";
 import { Product } from "src/components/Product";
 
 const AboutPage = () => {
-  const productInfo = {
+  const productDetails = {
     colors: ["red", "blue", "black"],
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa  veniam dicta beatae eos ex error culpa delectus rem tenetur,architecto quam nesciunt, dolor veritatis nisi minus  inventore, rerum at recusandae?",
@@ -20,12 +20,12 @@ const AboutPage = () => {
       <h2>Cześć</h2>
       <p>Mam na imię Gosia</p>
       <Product
-        colors={productInfo.colors}
-        description={productInfo.description}
-        title={productInfo.title}
-        price={productInfo.price}
-        discount={productInfo.discount}
-        newPrice={productInfo.newPrice}
+        colors={productDetails.colors}
+        description={productDetails.description}
+        title={productDetails.title}
+        price={productDetails.price}
+        discount={productDetails.discount}
+        newPrice={productDetails.newPrice}
       />
       <Footer />
     </div>
