@@ -5,6 +5,7 @@ import { ImageBox } from "./ImageBox/ImageBox";
 
 interface ProductProps {
   colors: string[];
+  sizes: string[];
   description: string;
   title: string;
   price: string;
@@ -14,6 +15,7 @@ interface ProductProps {
 
 export const Product = ({
   colors,
+  sizes,
   title,
   description,
   price,
@@ -54,11 +56,9 @@ export const Product = ({
               <fieldset className="mt-8 mb-4">
                 <legend className="mb-2 font-medium ">Size</legend>
                 <div className="flex flex-wrap gap-1">
-                  <Size text="xs" />
-                  <Size text="s" />
-                  <Size text="m" />
-                  <Size text="l" />
-                  <Size text="xl" />
+                  {sizes.map((size, ind) => (
+                    <Size key={`${size}-${ind}`} text={size} />
+                  ))}
                 </div>
               </fieldset>
 
@@ -73,7 +73,6 @@ export const Product = ({
                     className="w-12 rounded border-gray-200 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                   />
                 </div>
-
                 <button
                   type="submit"
                   className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white"

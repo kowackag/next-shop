@@ -3,7 +3,7 @@ import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { Product } from "src/components/Product";
 
-const Women = () => {
+const Men = () => {
   const productDetails = {
     colors: ["red", "blue", "black"],
     sizes: ["xs", "s", "m", "l", "xl"],
@@ -32,4 +32,4 @@ const Women = () => {
   );
 };
 
-export default Women;
+export default Men;

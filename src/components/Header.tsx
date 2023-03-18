@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/router";
+import { IconsBox } from "./IconBox/IconsBox";
 
 export const Header = () => {
   const router = useRouter();
@@ -14,9 +15,9 @@ export const Header = () => {
   ];
 
   return (
-    <header className="px-4 py-4 bg-slate-50 text-2xl text-zinc-800 flex justify-between items-center shadow-md">
+    <header className="px-4 py-4 bg-slate-50 text-3xl text-zinc-800 flex justify-between items-center shadow-md">
       <div>
-        <p>Shops</p>
+        <p className="tracking-wider align-top">eminent</p>
       </div>
       <nav className="w-1/2">
         <ul className="px-4 py-2 bg-slate-50 text-xl text-zinc-400 uppercase flex justify-between">
@@ -33,7 +34,7 @@ export const Header = () => {
         </ul>
       </nav>
       <div>
-        <p>buy</p>
+        <IconsBox />
       </div>
     </header>
   );
