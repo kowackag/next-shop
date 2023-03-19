@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { AiOutlineShopping, AiOutlineHeart } from "react-icons/ai";
 
@@ -15,6 +16,7 @@ interface ProductProps {
 }
 
 export const Product = ({
+  id,
   image,
   title,
   price,
@@ -23,11 +25,27 @@ export const Product = ({
 }: ProductProps) => {
   return (
     <a
-      href="#"
+      href={`${id}`}
       className="group block overflow-hidden px-6 py-8 mx-2 my-4 w-[350px] border-solid border-[1px] border-zinc-50 hover:border-zinc-200 duration-600"
     >
       <div className="relative h-[350px] sm:h-[450px]">
-      
+        <Image
+          src={image[0].src}
+          alt={image[0].alt}
+          className="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0"
+          width={100}
+          height={100}
+          unoptimized={true}
+        />
+
+        <Image
+          src={image.length > 1 ? image[1].src : image[0].src}
+          alt={image.length > 1 ? image[1].alt : image[0].alt}
+          className="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100"
+          width={100}
+          height={100}
+          unoptimized={true}
+        />
         {discount && (
           <p className="absolute top-4 left-0 bg-zinc-800 text-zinc-50 px-1 text-sm">
             {discount}
