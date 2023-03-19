@@ -1,7 +1,6 @@
 import React from "react";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
-import { NewHeader } from "src/components/NewHeader";
 import { ProductDetails } from "src/components/ProductDetails";
 
 const Women = () => {
@@ -19,7 +18,6 @@ const Women = () => {
   return (
     <div>
       <Header />
-      <NewHeader />
       <ProductDetails
         colors={productDetails.colors}
         sizes={productDetails.sizes}

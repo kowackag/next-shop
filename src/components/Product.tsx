@@ -1,35 +1,60 @@
+import Image from "next/image";
 import React from "react";
 import { AiOutlineShopping, AiOutlineHeart } from "react-icons/ai";
 
-export const Product = () => {
+interface ProductProps {
+  id: string;
+  title: string;
+  price: string;
+  newPrice?: string;
+  discount?: string;
+  image: {
+    src: string;
+    alt: string;
+  }[];
+}
+
+export const Product = ({
+  image,
+  title,
+  price,
+  newPrice,
+  discount,
+}: ProductProps) => {
   return (
     <a
       href="#"
-      className="group block overflow-hidden px-6 py-8 mx-2 my-4 w-[350px] border-solid border-[1px] border-zinc-50 hover:border-zinc-200 duration-700"
+      className="group block overflow-hidden px-6 py-8 mx-2 my-4 w-[350px] border-solid border-[1px] border-zinc-50 hover:border-zinc-200 duration-600"
     >
       <div className="relative h-[350px] sm:h-[450px]">
-        <img
-          src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0"
-        />
-
-        <img
-          src="https://images.unsplash.com/photo-1523381140794-a1eef18a37c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MjQ2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100"
-        />
-        <div className="absolute bottom-4 right-4 text-zinc-400 text-3xl ">
-          <AiOutlineHeart className="fill-zinc-400" />
-          <AiOutlineShopping />
+      
+        {discount && (
+          <p className="absolute top-4 left-0 bg-zinc-800 text-zinc-50 px-1 text-sm">
+            {discount}
+          </p>
+        )}
+        <div className="absolute bottom-3 right-3 text-zinc-400 text-3xl ">
+          <AiOutlineHeart className="opacity-0 group-hover:opacity-100 transition-opacity duration-600" />
+          <AiOutlineShopping className="opacity-0 group-hover:opacity-100 transition-opacity duration-600" />
         </div>
       </div>
 
-      <div className="relative pt-3 text-zinc-700">
-        <h3 className="text-l group-hover:underline group-hover:underline-offset-4 text-center">
-          Limited Edition Sports Trainer
+      <div className="relative pt-3 text-zinc-600">
+        <h3 className="text-l decoration-transparent underline underline-offset-4 group-hover:decoration-inherit transition duration-700 text-center">
+          {title}
         </h3>
-        <p className="mt-1.5 tracking-wide text-center">189.99</p>
+        <div className="flex justify-center">
+          <p
+            className={`mt-1.5 tracking-wide text-center ${
+              discount ? "line-through" : ""
+            }`}
+          >
+            {price}
+          </p>
+          {newPrice && (
+            <p className="mt-1.5 px-1 font-bold text-red-700">{newPrice}</p>
+          )}
+        </div>
       </div>
     </a>
   );

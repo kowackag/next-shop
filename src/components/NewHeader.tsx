@@ -23,10 +23,9 @@ export const NewHeader = () => {
             </svg>
           </button>
 
-          <a href="#" className="flex">
-            <span className="sr-only">Logo</span>
-            <span className="inline-block h-10 w-32 rounded-lg bg-gray-200"></span>
-          </a>
+          <div>
+            <p className="tracking-wider align-top">eminent</p>
+          </div>
         </div>
 
         <div className="flex flex-1 items-center justify-end gap-8">
