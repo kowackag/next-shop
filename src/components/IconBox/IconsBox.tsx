@@ -10,10 +10,11 @@ import {
 
 export const IconsBox = () => {
   const router = useRouter();
+
   return (
     <ul className="px-4 py-2 bg-slate-50 text-2xl text-zinc-400 uppercase flex justify-between">
       <li className=" hover:text-zinc-800 mx-3">
-        <div className=" hover:cursor-pointer">
+        <div className="hover:cursor-pointer">
           <AiOutlineSearch />
         </div>
       </li>
@@ -27,7 +28,7 @@ export const IconsBox = () => {
       </li>
       <li className=" hover:text-zinc-800 mx-3">
         <Link
-          href=""
+          href="basket"
           className={router.pathname === "/basket" ? "text-zinc-800" : ""}
         >
           <AiOutlineShopping />

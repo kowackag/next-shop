@@ -1,89 +1,36 @@
-import { Color } from "./Color/Color";
-import { Size } from "./Size/Size";
-import { PriceBox } from "./PriceBox/PriceBox";
-import { ImageBox } from "./ImageBox/ImageBox";
+import React from "react";
+import { AiOutlineShopping, AiOutlineHeart } from "react-icons/ai";
 
-interface ProductProps {
-  colors: string[];
-  sizes: string[];
-  description: string;
-  title: string;
-  price: string;
-  newPrice?: string;
-  discount?: string;
-}
-
-export const Product = ({
-  colors,
-  sizes,
-  title,
-  description,
-  price,
-  newPrice,
-  discount,
-}: ProductProps) => {
+export const Product = () => {
   return (
-    <section>
-      <div className="relative mx-auto max-w-screen-xl px-4 py-8 text-zinc-800">
-        <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
-          <ImageBox />
-          <div className="sticky top-0">
-            <div className="max-w-[35ch] space-y-2 mt-8">
-              <h1 className="text-4xl font-bold">{title}</h1>
-            </div>
+    <a
+      href="#"
+      className="group block overflow-hidden px-6 py-8 mx-2 my-4 w-[350px] border-solid border-[1px] border-zinc-50 hover:border-zinc-200 duration-700"
+    >
+      <div className="relative h-[350px] sm:h-[450px]">
+        <img
+          src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0"
+        />
 
-            <PriceBox price={price} discount={discount} newPrice={newPrice} />
-
-            <div className="mt-4">
-              <div className="prose max-w-none">
-                <p>{description}</p>
-              </div>
-              <button className="mt-2 text-sm font-medium underline">
-                Read More
-              </button>
-            </div>
-
-            <form className="mt-8 mb-4 text-zinc-800">
-              <fieldset>
-                <legend className="mb-2 font-medium">Color</legend>
-                <div className="flex flex-wrap gap-1">
-                  {colors.map((item, ind) => (
-                    <Color key={`${item}_${ind}`} colorName={item} id={ind} />
-                  ))}
-                </div>
-              </fieldset>
-
-              <fieldset className="mt-8 mb-4">
-                <legend className="mb-2 font-medium ">Size</legend>
-                <div className="flex flex-wrap gap-1">
-                  {sizes.map((size, ind) => (
-                    <Size key={`${size}-${ind}`} text={size} />
-                  ))}
-                </div>
-              </fieldset>
-
-              <div className="mt-8 flex gap-4">
-                <div>
-                  <label htmlFor="quantity" className="sr-only"></label>
-                  <input
-                    type="number"
-                    id="quantity"
-                    min="1"
-                    value="1"
-                    className="w-12 rounded border-gray-200 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white"
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </form>
-          </div>
+        <img
+          src="https://images.unsplash.com/photo-1523381140794-a1eef18a37c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MjQ2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100"
+        />
+        <div className="absolute bottom-4 right-4 text-zinc-400 text-3xl ">
+          <AiOutlineHeart className="fill-zinc-400" />
+          <AiOutlineShopping />
         </div>
       </div>
-    </section>
+
+      <div className="relative pt-3 text-zinc-700">
+        <h3 className="text-l group-hover:underline group-hover:underline-offset-4 text-center">
+          Limited Edition Sports Trainer
+        </h3>
+        <p className="mt-1.5 tracking-wide text-center">189.99</p>
+      </div>
+    </a>
   );
 };
