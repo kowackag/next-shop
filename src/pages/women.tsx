@@ -1,12 +1,42 @@
-import { InferGetStaticPropsType } from "next";
 import React from "react";
+import { useQuery } from "react-query";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
+import { Pagination } from "src/components/Pagination";
 import { Product } from "src/components/Product";
 
+export interface ApiDataType {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  rating: Rating;
+}
+
+export interface Rating {
+  rate: number;
+  count: number;
+}
+
+const getProducts = async () => {
+  const res = await fetch(`https://fakestoreapi.com/products/`);
+  const data: ApiDataType[] = await res.json();
+  return data;
+};
+
 const Women = () => {
-  console.log(data.length);
-  const products = [
+  const { data, isLoading, isError } = useQuery("products", getProducts);
+
+  if (isLoading) {
+    return <div>Loading</div>;
+  }
+
+  if (isError || !data) {
+    return <div>Loading</div>;
+  }
+  const product = [
     {
       id: "1",
       colors: ["red", "blue", "black"],
@@ -44,7 +74,7 @@ const Women = () => {
       <Header />
       <div className="px-8 py-8 mx-2">
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center">
-          {products.map((item) => (
+          {product.map((item) => (
             <li key={item.id}>
               <Product
                 id={item.id}
@@ -57,17 +87,19 @@ const Women = () => {
             </li>
           ))}
 
-          {data.map((item) => (
-            <li key={item.id}>
-              <Product
-                id={item.id.toString()}
-                title={item.title}
-                price={item.price.toString()}
-                image={[{ src: item.image, alt: item.title }]}
-              />
-            </li>
-          ))}
+          {data &&
+            data.map((item) => (
+              <li key={item.id}>
+                <Product
+                  id={item.id.toString()}
+                  title={item.title}
+                  price={item.price.toString()}
+                  image={[{ src: item.image, alt: item.title }]}
+                />
+              </li>
+            ))}
         </ul>
+        <Pagination />
       </div>
 
       <Footer />
@@ -76,28 +108,3 @@ const Women = () => {
 };
 
 export default Women;
-
-// export const getStaticProps = async () => {
-//   const res = await fetch(`https://fakestoreapi.com/products/`);
-//   const data: ApiDataType[] = await res.json();
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// };
-
-export interface ApiDataType {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: Rating;
-}
-
-export interface Rating {
-  rate: number;
-  count: number;
-}
