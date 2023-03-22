@@ -24,24 +24,20 @@ export const Product = ({
   discount,
 }: ProductProps) => {
   return (
-    <a
-      href={`${id}`}
-      className="group block overflow-hidden px-6 py-8 mx-2 my-4 w-[350px] border-solid border-[1px] border-zinc-50 hover:border-zinc-200 duration-600"
-    >
-      <div className="relative h-[350px] sm:h-[450px]">
+    <div className="group block overflow-hidden mx-2 my-4 md:px-8 md:py-8 border-solid border-[1px] border-zinc-50 hover:border-zinc-200 duration-600">
+      <div className="relative aspect-square w-full">
         <Image
           src={image[0].src}
           alt={image[0].alt}
-          className="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0"
+          className="absolute aspect-square w-full inset-0 object-cover opacity-100 group-hover:opacity-0"
           width={100}
           height={100}
           unoptimized={true}
         />
-
         <Image
           src={image.length > 1 ? image[1].src : image[0].src}
           alt={image.length > 1 ? image[1].alt : image[0].alt}
-          className="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100"
+          className="absolute aspect-square w-full inset-0 object-cover opacity-0 group-hover:opacity-100"
           width={100}
           height={100}
           unoptimized={true}
@@ -56,24 +52,25 @@ export const Product = ({
           <AiOutlineShopping className="opacity-0 group-hover:opacity-100 transition-opacity duration-600" />
         </div>
       </div>
-
-      <div className="relative pt-3 text-zinc-600">
-        <h3 className="text-l decoration-transparent underline underline-offset-4 group-hover:decoration-inherit transition duration-700 text-center">
-          {title}
-        </h3>
-        <div className="flex justify-center">
-          <p
-            className={`mt-1.5 tracking-wide text-center ${
-              discount ? "line-through" : ""
-            }`}
-          >
-            {price}
-          </p>
-          {newPrice && (
-            <p className="mt-1.5 px-1 font-bold text-red-700">{newPrice}</p>
-          )}
+      <a href={`${id}`}>
+        <div className="relative pt-3 text-zinc-600">
+          <h3 className="text-l decoration-transparent underline underline-offset-4 group-hover:decoration-inherit transition duration-700 text-center">
+            {title}
+          </h3>
+          <div className="flex justify-center">
+            <p
+              className={`mt-1.5 tracking-wide text-center ${
+                discount ? "line-through" : ""
+              }`}
+            >
+              {price}
+            </p>
+            {newPrice && (
+              <p className="mt-1.5 px-1 font-bold text-red-700">{newPrice}</p>
+            )}
+          </div>
         </div>
-      </div>
-    </a>
+      </a>
+    </div>
   );
 };
