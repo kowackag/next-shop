@@ -7,7 +7,7 @@ export const Header = () => {
   const router = useRouter();
 
   const links = [
-    { title: "Home", href: "/" },
+    { title: "Home", href: "/home" },
     { title: "Women", href: "/women" },
     { title: "Men", href: "/men" },
     { title: "Inspiration", href: "/inspiration" },
@@ -25,7 +25,9 @@ export const Header = () => {
             <li className=" hover:text-zinc-800 " key={href}>
               <Link
                 href={href}
-                className={router.pathname === href ? "text-zinc-800" : ""}
+                className={
+                  router.pathname.startsWith(href) ? "text-zinc-800" : ""
+                }
               >
                 {title}
               </Link>

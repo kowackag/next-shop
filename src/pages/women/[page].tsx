@@ -1,4 +1,5 @@
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
@@ -20,21 +21,35 @@ export interface Rating {
   count: number;
 }
 
-const getProducts = async () => {
-  const res = await fetch(`https://fakestoreapi.com/products/`);
+const getProducts = async (num: number, ofset = 0) => {
+  const res = await fetch(
+    `https://naszsklep-api.vercel.app/api/products?take=${num}&offset=${ofset}`
+  );
   const data: ApiDataType[] = await res.json();
+
   return data;
 };
 
 const Women = () => {
-  const { data, isLoading, isError } = useQuery("products", getProducts);
+  const [productsNum, setProductsNum] = useState("5");
+
+  const router = useRouter();
+  console.log(router);
+
+  const { data, isLoading, isError } = useQuery("products", () =>
+    getProducts(productsNum, 0)
+  );
+
+  useEffect(() => {
+    console.log("data", data);
+  }, [data]);
 
   if (isLoading) {
     return <div>Loading</div>;
   }
 
   if (isError || !data) {
-    return <div>Loading</div>;
+    return <div>Error</div>;
   }
   const product = [
     {
@@ -68,6 +83,13 @@ const Women = () => {
       ],
     },
   ];
+
+  const loadPage = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+    getProducts(15, 0);
+    setProductsNum(10);
+  };
 
   return (
     <div>

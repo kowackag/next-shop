@@ -5,7 +5,6 @@ import { Header } from "src/components/Header";
 import { Product } from "src/components/Product";
 
 const Men = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
-
   const products = [
     {
       id: "1",

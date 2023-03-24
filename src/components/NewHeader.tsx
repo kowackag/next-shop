@@ -39,7 +39,6 @@ export const NewHeader = () => {
             >
               About
             </Link>
-
             <a
               href="/news"
               className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700"
