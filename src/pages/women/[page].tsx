@@ -1,13 +1,11 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { useQuery } from "react-query";
-import { Footer } from "src/components/Footer";
-import { Header } from "src/components/Header";
+import { useQuery } from "@tanstack/react-query";
 import { Pagination } from "src/components/Pagination";
 import { Product } from "src/components/Product";
 
 export interface ApiDataType {
-  id: number;
+  id: string;
   title: string;
   price: number;
   description: string;
@@ -21,28 +19,25 @@ export interface Rating {
   count: number;
 }
 
-const getProducts = async (num: number, ofset = 0) => {
+const getProducts = async (page: number, num = 10) => {
+  const offset = (page - 1) * num;
   const res = await fetch(
-    `https://naszsklep-api.vercel.app/api/products?take=${num}&offset=${ofset}`
+    `https://naszsklep-api.vercel.app/api/products?take=${num}&offset=${offset}`
   );
   const data: ApiDataType[] = await res.json();
-
   return data;
 };
 
 const Women = () => {
-  const [productsNum, setProductsNum] = useState("5");
+  const { query } = useRouter();
+  const [pageNum, setPageNum] = useState<number>(Number(query.page));
 
-  const router = useRouter();
-  console.log(router);
+  useEffect(() => setPageNum(Number(query.page)), [query.page]);
 
-  const { data, isLoading, isError } = useQuery("products", () =>
-    getProducts(productsNum, 0)
-  );
-
-  useEffect(() => {
-    console.log("data", data);
-  }, [data]);
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["products", pageNum],
+    queryFn: () => getProducts(pageNum),
+  });
 
   if (isLoading) {
     return <div>Loading</div>;
@@ -51,6 +46,7 @@ const Women = () => {
   if (isError || !data) {
     return <div>Error</div>;
   }
+
   const product = [
     {
       id: "1",
@@ -84,47 +80,35 @@ const Women = () => {
     },
   ];
 
-  const loadPage = (e) => {
-    e.preventDefault();
-    console.log(e.target);
-    getProducts(15, 0);
-    setProductsNum(10);
-  };
-
   return (
-    <div>
-      <Header />
-      <div className="px-8 py-8 mx-2">
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center">
-          {product.map((item) => (
+    <div className="px-8 py-8 mx-2">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center">
+        {product.map((item) => (
+          <li key={item.id}>
+            <Product
+              id={item.id}
+              title={item.title}
+              price={item.price}
+              discount={item.discount}
+              newPrice={item.newPrice}
+              image={item.image}
+            />
+          </li>
+        ))}
+
+        {data &&
+          data.map((item) => (
             <li key={item.id}>
               <Product
                 id={item.id}
                 title={item.title}
-                price={item.price}
-                discount={item.discount}
-                newPrice={item.newPrice}
-                image={item.image}
+                price={item.price.toString()}
+                image={[{ src: item.image, alt: item.title }]}
               />
             </li>
           ))}
-
-          {data &&
-            data.map((item) => (
-              <li key={item.id}>
-                <Product
-                  id={item.id.toString()}
-                  title={item.title}
-                  price={item.price.toString()}
-                  image={[{ src: item.image, alt: item.title }]}
-                />
-              </li>
-            ))}
-        </ul>
-        <Pagination />
-      </div>
-
-      <Footer />
+      </ul>
+      <Pagination path="women" />
     </div>
   );
 };

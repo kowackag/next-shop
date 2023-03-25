@@ -39,37 +39,32 @@ const Men = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   ];
 
   return (
-    <div>
-      <Header />
-      <div className="px-8 py-8 mx-2">
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center">
-          {products.map((item) => (
-            <li key={item.id}>
-              <Product
-                id={item.id}
-                title={item.title}
-                price={item.price}
-                discount={item.discount}
-                newPrice={item.newPrice}
-                image={item.image}
-              />
-            </li>
-          ))}
+    <div className="px-8 py-8 mx-2">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center">
+        {products.map((item) => (
+          <li key={item.id}>
+            <Product
+              id={item.id}
+              title={item.title}
+              price={item.price}
+              discount={item.discount}
+              newPrice={item.newPrice}
+              image={item.image}
+            />
+          </li>
+        ))}
 
-          {data.map((item) => (
-            <li key={item.id}>
-              <Product
-                id={item.id.toString()}
-                title={item.title}
-                price={item.price.toString()}
-                image={[{ src: item.image, alt: item.title }]}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <Footer />
+        {data.map((item) => (
+          <li key={item.id}>
+            <Product
+              id={item.id.toString()}
+              title={item.title}
+              price={item.price.toString()}
+              image={[{ src: item.image, alt: item.title }]}
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

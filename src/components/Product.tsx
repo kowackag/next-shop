@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+
 import { AiOutlineShopping, AiOutlineHeart } from "react-icons/ai";
 
 interface ProductProps {
@@ -52,7 +52,7 @@ export const Product = ({
           <AiOutlineShopping className="opacity-0 group-hover:opacity-100 transition-opacity duration-600" />
         </div>
       </div>
-      <a href={`${id}`}>
+      <a href={`/product/${id}`}>
         <div className="relative pt-3 text-zinc-600">
           <h3 className="text-l decoration-transparent underline underline-offset-4 group-hover:decoration-inherit transition duration-700 text-center">
             {title}

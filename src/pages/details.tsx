@@ -1,7 +1,7 @@
 import React from "react";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
-import { ProductDetails } from "src/components/ProductDetails";
+import { ProductDetails } from "src/pages/product/[prodId]";
 
 const Details = () => {
   const productDetails = {

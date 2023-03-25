@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   images: {
-    domains: ["images.unsplash.com"],
+    domains: ["images.unsplash.com", "picsum.photos",  "naszsklep-api.vercel.app"],
     remotePatterns: [
       {
         protocol: "https",
@@ -11,7 +11,32 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+        port: "",
+        pathname: "/**",
+      },
     ],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/home",
+        permanent: true,
+      },
+      {
+        source: "/women",
+        destination: "/women/1",
+        permanent: true,
+      },
+      {
+        source: "/men",
+        destination: "/men/1",
+        permanent: true,
+      },
+    ];
   },
 };
 

@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import Image from "next/image";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
@@ -23,7 +23,12 @@ interface ProductProps {
 const Product = ({ data }: ProductProps) => {
   return (
     <>
-      <img src={data.thumbnailUrl} alt={data.thumbnailAlt} />
+      <Image
+        src={data.thumbnailUrl}
+        alt={data.thumbnailAlt}
+        width={1000}
+        height={1000}
+      />
       <div>
         <p>{data.description}</p>
         <p className="weight-bold my-4 text-red-600">{data.rating}</p>
@@ -35,11 +40,9 @@ const Product = ({ data }: ProductProps) => {
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 ">
-      <Header />
       <Main>
         <Product data={DATA} />
       </Main>
-      <Footer />
     </div>
   );
 }

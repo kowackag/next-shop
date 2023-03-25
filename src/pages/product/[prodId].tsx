@@ -1,7 +1,8 @@
-import { Color } from "./Color/Color";
-import { Size } from "./Size/Size";
-import { PriceBox } from "./PriceBox/PriceBox";
-import { ImageBox } from "./ImageBox/ImageBox";
+import { Color } from "../../components/Color/Color";
+import { Size } from "../../components/Size/Size";
+import { PriceBox } from "../../components/PriceBox/PriceBox";
+import { ImageBox } from "../../components/ImageBox/ImageBox";
+import { Header } from "src/components/Header";
 
 interface ProductDetailsProps {
   colors: string[];
@@ -22,6 +23,7 @@ export const ProductDetails = ({
   newPrice,
   discount,
 }: ProductDetailsProps) => {
+  console.log(title);
   return (
     <section>
       <div className="relative mx-auto max-w-screen-xl px-4 py-8 text-zinc-800">
