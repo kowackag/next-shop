@@ -24,7 +24,7 @@ export const Product = ({
   discount,
 }: ProductProps) => {
   return (
-    <div className="group block overflow-hidden mx-2 my-4 md:px-8 md:py-8 border-solid border-[1px] border-zinc-50 hover:border-zinc-200 duration-600">
+    <div className="group block overflow-hidden mx-6 my-4 md:px-8 md:py-8 border-solid border-[1px] border-zinc-50 hover:border-zinc-200 duration-600">
       <div className="relative aspect-square w-full">
         <Image
           src={image[0].src}

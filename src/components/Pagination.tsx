@@ -1,63 +1,45 @@
 import React from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
 interface PaginationProps {
   path: string;
+  length: number;
+  startPage: number;
 }
-export const Pagination = ({ path}: PaginationProps) => {
+
+const createLinkArr = (startPage: number, length: number, path: string) => {
+  const links = [];
+  for (let i = startPage; i < length + 1; i++) {
+    links.push({
+      href: `/${path}/${i}/`,
+      num: i,
+    });
+  }
+  return links;
+};
+
+export const Pagination = ({ path, startPage, length }: PaginationProps) => {
+  const router = useRouter();
+  const linkArr = createLinkArr(startPage, length, path);
   return (
-    <nav className="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
-      <div className="hidden md:-mt-px md:flex">
-        <a
-          href={`/${path}/1`}
-          data-page={1}
-          className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
-          //onClick={onClick}
-        >
-          1
-        </a>
-        <a
-          href={`/${path}/2`}
-          data-page={2}
-          className="border-indigo-500 text-indigo-600 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
-          aria-current="page"
-          //onClick={onClick}
-        >
-          2
-        </a>
-        <a
-          href={`/${path}/3`}
-          // href="3"
-          className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
-          //onClick={onClick}
-          data-page={3}
-        >
-          3
-        </a>
-        <span className="border-transparent text-gray-500 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium">
-          ...
-        </span>
-        <a
-          href={`/${path}/8`}
-          data-page={8}
-          className="border-indigo-500 text-indigo-600 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
-          //onClick={onClick}
-        >
-          8
-        </a>
-        <a
-          href={`/${path}/9`}
-          data-page={9}
-          className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
-          //onClick={onClick}
-        >
-          9
-        </a>
-        <a
-          href={`/${path}/9`}
-          className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
-        >
-          10
-        </a>
-      </div>
+    <nav className="border-t border-gray-200 px-4 flex items-center justify-between align-middle sm:px-0">
+      <ul className="hidden mx-auto md:-mt-px md:flex">
+        {linkArr.map((item) => (
+          <li key={item.href}>
+            <Link
+              href={item.href}
+              className={`border-transparent text-zinc-400 hover:border-zinc-400 border-t-4 py-4 px-6 inline-flex items-center text-l font-medium ${
+                router.asPath === item.href
+                  ? "border-indigo-700 text-indigo-700 hover:border-indigo-700 font-bold"
+                  : ""
+              }`}
+            >
+              {item.num}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 };
