@@ -33,6 +33,7 @@ export const Product = ({
           width={100}
           height={100}
           unoptimized={true}
+          priority
         />
         <Image
           src={image.length > 1 ? image[1].src : image[0].src}
@@ -52,7 +53,7 @@ export const Product = ({
           <AiOutlineShopping className="opacity-0 group-hover:opacity-100 transition-opacity duration-600" />
         </div>
       </div>
-      <a href={`/product/${id}`}>
+      <a href={`/products/${id}`}>
         <div className="relative pt-3 text-zinc-600">
           <h3 className="text-l decoration-transparent underline underline-offset-4 group-hover:decoration-inherit transition duration-700 text-center">
             {title}

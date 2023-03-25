@@ -3,7 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   images: {
-    domains: ["images.unsplash.com", "picsum.photos",  "naszsklep-api.vercel.app"],
+    domains: [
+      "images.unsplash.com",
+      "picsum.photos",
+      "naszsklep-api.vercel.app",
+    ],
     remotePatterns: [
       {
         protocol: "https",
@@ -14,6 +18,12 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "picsum.photos",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "naszsklep-api.vercel.app",
         port: "",
         pathname: "/**",
       },

@@ -1,8 +1,8 @@
-import { Color } from "../../components/Color/Color";
-import { Size } from "../../components/Size/Size";
-import { PriceBox } from "../../components/PriceBox/PriceBox";
-import { ImageBox } from "../../components/ImageBox/ImageBox";
-import { Header } from "src/components/Header";
+import React from "react";
+import { PriceBox } from "src/components/PriceBox/PriceBox";
+import { ImageBox } from "src/components/ImageBox/ImageBox";
+import { SizeBox } from "src/components/SizeBox/SizeBox";
+import { ColorBox } from "./ColorBox/ColorBox";
 
 interface ProductDetailsProps {
   colors: string[];
@@ -12,6 +12,25 @@ interface ProductDetailsProps {
   price: string;
   newPrice?: string;
   discount?: string;
+  images: {
+    src: string;
+    alt: string;
+  }[];
+}
+
+export interface ApiDataType {
+  id: string;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  rating: Rating;
+}
+
+export interface Rating {
+  rate: number;
+  count: number;
 }
 
 export const ProductDetails = ({
@@ -22,48 +41,27 @@ export const ProductDetails = ({
   price,
   newPrice,
   discount,
+  images,
 }: ProductDetailsProps) => {
-  console.log(title);
   return (
     <section>
       <div className="relative mx-auto max-w-screen-xl px-4 py-8 text-zinc-800">
         <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
-          <ImageBox />
+          <ImageBox images={images} />
           <div className="sticky top-0">
             <div className="max-w-[35ch] space-y-2 mt-8">
               <h1 className="text-4xl font-bold">{title}</h1>
             </div>
-
             <PriceBox price={price} discount={discount} newPrice={newPrice} />
-
             <div className="mt-4">
               <div className="prose max-w-none">
                 <p>{description}</p>
               </div>
-              <button className="mt-2 text-sm font-medium underline">
-                Read More
-              </button>
             </div>
 
             <form className="mt-8 mb-4 text-zinc-800">
-              <fieldset>
-                <legend className="mb-2 font-medium">Color</legend>
-                <div className="flex flex-wrap gap-1">
-                  {colors.map((item, ind) => (
-                    <Color key={`${item}_${ind}`} colorName={item} id={ind} />
-                  ))}
-                </div>
-              </fieldset>
-
-              <fieldset className="mt-8 mb-4">
-                <legend className="mb-2 font-medium ">Size</legend>
-                <div className="flex flex-wrap gap-1">
-                  {sizes.map((size, ind) => (
-                    <Size key={`${size}-${ind}`} text={size} />
-                  ))}
-                </div>
-              </fieldset>
-
+              <ColorBox colors={colors} />
+              <SizeBox sizes={sizes} />
               <div className="mt-8 flex gap-4">
                 <div>
                   <label htmlFor="quantity" className="sr-only"></label>
