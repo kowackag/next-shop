@@ -26,7 +26,8 @@ export type InferGetStaticPathsType<T> = T extends () => Promise<{
 
 const prodByPage = 12;
 
-const Men = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Men = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { data } = props;
   if (!data) {
     return <div>upsss</div>;
   }
@@ -56,7 +57,7 @@ export default Men;
 
 export const getStaticPaths = async () => {
   const pages = [];
-  for (let i = 1; i < 13; i++) {
+  for (let i = 1; i < 11; i++) {
     pages.push(i);
   }
   return {
@@ -86,11 +87,11 @@ export const getStaticProps = async ({
     `https://naszsklep-api.vercel.app/api/products?take=${prodByPage}&offset=${offset}`
   );
   const data: ApiDataType[] = await res.json();
+
   return {
     props: {
       page: params.page,
       data,
-      length: 120,
     },
   };
 };

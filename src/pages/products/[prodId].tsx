@@ -26,6 +26,7 @@ export interface Rating {
 const ProductId = ({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+
   if (!data) {
     return <div>upsss</div>;
   }
@@ -46,10 +47,11 @@ const ProductId = ({
 export default ProductId;
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`https://naszsklep-api.vercel.app/api/products/`);
+  const res = await fetch(`https://naszsklep-api.vercel.app/api/products/?take=250&offset=0`);
   const data: ApiDataType[] = await res.json();
   return {
     paths: data.map((item) => {
+      console.log()
       return {
         params: {
           prodId: item.id,
@@ -75,6 +77,7 @@ export const getStaticProps = async ({
   const data: ApiDataType = await res.json();
   return {
     props: {
+      page: params.prodId,
       data,
     },
   };
