@@ -28,6 +28,7 @@ const Product = ({ data }: ProductProps) => {
         alt={data.thumbnailAlt}
         width={1000}
         height={1000}
+        crossOrigin="anonymous"
       />
       <div>
         <p>{data.description}</p>

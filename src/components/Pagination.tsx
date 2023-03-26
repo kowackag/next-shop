@@ -22,6 +22,7 @@ const createLinkArr = (startPage: number, length: number, path: string) => {
 export const Pagination = ({ path, startPage, length }: PaginationProps) => {
   const router = useRouter();
   const linkArr = createLinkArr(startPage, length, path);
+
   return (
     <nav className="border-t border-gray-200 px-4 flex items-center justify-between align-middle sm:px-0">
       <ul className="hidden mx-auto md:-mt-px md:flex">
@@ -29,10 +30,10 @@ export const Pagination = ({ path, startPage, length }: PaginationProps) => {
           <li key={item.href}>
             <Link
               href={item.href}
-              className={`border-transparent text-zinc-400 hover:border-zinc-400 border-t-4 py-4 px-6 inline-flex items-center text-l font-medium ${
-                router.asPath === item.href
-                  ? "border-indigo-700 text-indigo-700 hover:border-indigo-700 font-bold"
-                  : ""
+              className={`border-t-4 py-4 px-6 inline-flex items-center text-l font-medium ${
+                router.asPath == item.href
+                  ? "border-indigo-700 text-indigo-700 font-bold"
+                  : "hover:border-zinc-400 border-transparent text-zinc-400"
               }`}
             >
               {item.num}

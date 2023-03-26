@@ -20,6 +20,8 @@ export const ImageBox = ({ images }: ImagesBoxProps) => {
         width={100}
         height={100}
         unoptimized={true}
+        crossOrigin="anonymous"
+        priority
       />
 
       <div className="grid grid-cols-2 gap-4 lg:mt-4">
@@ -33,6 +35,8 @@ export const ImageBox = ({ images }: ImagesBoxProps) => {
               width={100}
               height={100}
               unoptimized={true}
+              crossOrigin="anonymous"
+              priority
             />
           );
         })}

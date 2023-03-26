@@ -59,7 +59,7 @@ export const ProductDetails = ({
               </div>
             </div>
 
-            <form className="mt-8 mb-4 text-zinc-800">
+            <div className="mt-8 mb-4 text-zinc-800">
               <ColorBox colors={colors} />
               <SizeBox sizes={sizes} />
               <div className="mt-8 flex gap-4">
@@ -69,18 +69,16 @@ export const ProductDetails = ({
                     type="number"
                     id="quantity"
                     min="1"
-                    value="1"
                     className="w-12 rounded border-gray-200 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                   />
                 </div>
                 <button
-                  type="submit"
                   className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white"
                 >
                   Add to Cart
                 </button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
