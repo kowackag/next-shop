@@ -8,8 +8,8 @@ export const Header = () => {
 
   const links = [
     { title: "Home", href: "/home" },
-    { title: "Women", href: "/women" },
-    { title: "Men", href: "/men" },
+    { title: "Women", href: "/women/1" },
+    { title: "Men", href: "/men/1" },
     { title: "Inspiration", href: "/inspiration" },
     { title: "Shops", href: "/shops" },
   ];

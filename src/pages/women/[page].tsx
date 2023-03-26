@@ -19,7 +19,7 @@ export interface Rating {
   count: number;
 }
 
-const getProducts = async (page: number, num = 10) => {
+const getProducts = async (page = 1, num = 10) => {
   const offset = (page - 1) * num;
   const res = await fetch(
     `https://naszsklep-api.vercel.app/api/products?take=${num}&offset=${offset}`
@@ -30,7 +30,10 @@ const getProducts = async (page: number, num = 10) => {
 
 const Women = () => {
   const { query } = useRouter();
-  const [pageNum, setPageNum] = useState<number>(Number(query.page));
+
+  const [pageNum, setPageNum] = useState<number>(
+    query.page ? Number(query.page) : 1
+  );
 
   useEffect(() => setPageNum(Number(query.page)), [query.page]);
 

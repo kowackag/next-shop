@@ -26,10 +26,9 @@ export type InferGetStaticPathsType<T> = T extends () => Promise<{
 
 const prodByPage = 12;
 
-const Men = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { data } = props;
+const Men = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   if (!data) {
-    return <div>upsss</div>;
+    return <div>Some error</div>;
   }
   return (
     <div className="px-8 py-8 mx-2 flex">

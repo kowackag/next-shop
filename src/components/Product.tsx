@@ -26,16 +26,16 @@ export const Product = ({
   return (
     <div className="overflow-hidden mx-6 my-4 md:px-8 md:py-8 border-solid border-[1px] border-zinc-50 hover:border-zinc-200 duration-600">
       <div className="relative ">
+        <div className="w-full aspect-square object-cover relative">
         <Image
           src={image[0].src}
           alt={image[0].alt}
-          className="w-full aspect-square object-cover"
-          width={100}
-          height={100}
+          fill
           unoptimized={true}
-          priority
           crossOrigin="anonymous"
         />
+        </div>
+        
         {discount && (
           <p className="bg-zinc-800 text-zinc-50 px-1 text-sm">{discount}</p>
         )}
