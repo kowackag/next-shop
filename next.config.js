@@ -8,6 +8,7 @@ const nextConfig = {
       "picsum.photos",
       "naszsklep-api.vercel.app",
     ],
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",
