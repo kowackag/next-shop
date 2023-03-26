@@ -19,20 +19,20 @@ export const IconsBox = () => {
         </div>
       </li>
       <li className=" hover:text-zinc-800 mx-3">
-        <Link
-          href="wishlist"
-          className={router.pathname === "/wishlist" ? "text-zinc-800" : ""}
+        <div
+          // href="wishlist"
+          className="hover:cursor-pointer"
         >
           <AiOutlineHeart />
-        </Link>
+        </div>
       </li>
       <li className=" hover:text-zinc-800 mx-3">
-        <Link
-          href="basket"
-          className={router.pathname === "/basket" ? "text-zinc-800" : ""}
+        <div
+          //href="basket"
+          className="hover:cursor-pointer"
         >
           <AiOutlineShopping />
-        </Link>
+        </div>
       </li>
     </ul>
   );

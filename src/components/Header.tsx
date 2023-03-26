@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/router";
-import { IconsBox } from "./IconBox/IconsBox";
+import { IconsBox } from "./IconsBox";
 
 export const Header = () => {
   const router = useRouter();
