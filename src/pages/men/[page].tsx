@@ -30,6 +30,7 @@ const Men = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   if (!data) {
     return <div>Some error</div>;
   }
+
   return (
     <div className="px-8 py-8 mx-2 flex">
       <div className="hidden lg:block w-1/4 text-4xl">Asside</div>
@@ -55,10 +56,8 @@ const Men = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default Men;
 
 export const getStaticPaths = async () => {
-  const pages = [];
-  for (let i = 1; i < 11; i++) {
-    pages.push(i);
-  }
+  const pages = Array.from({ length: 10 }, (_, i) => i + 1);
+
   return {
     paths: pages.map((item) => {
       return {

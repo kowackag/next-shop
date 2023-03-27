@@ -30,16 +30,17 @@ const getProducts = async (page = 1, num = 10) => {
 
 const Women = () => {
   const { query } = useRouter();
+  const [pageNum, setPageNum] = useState<number>(1);
 
-  const [pageNum, setPageNum] = useState<number>(
-    query.page ? Number(query.page) : 1
-  );
-
-  useEffect(() => setPageNum(Number(query.page)), [query.page]);
+  useEffect(() => {
+    if(query.page) {
+       setPageNum(Number(query.page))
+    }
+  }, [query.page]);
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["products", pageNum],
-    queryFn: () => getProducts(pageNum),
+    queryFn: () => getProducts(pageNum)
   });
 
   const renderProducts = () => {
