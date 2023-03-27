@@ -7,11 +7,11 @@ export const Header = () => {
   const router = useRouter();
 
   const links = [
-    { title: "Home", href: "/home" },
-    { title: "Women", href: "/women/1" },
-    { title: "Men", href: "/men/1" },
-    { title: "Inspiration", href: "/inspiration" },
-    { title: "Shops", href: "/shops" },
+    { title: "Home", href: "/home", page: "" },
+    { title: "Women", href: "/women", page: "1" },
+    { title: "Men", href: "/men", page: "1" },
+    { title: "Inspiration", href: "/inspiration", page: "" },
+    { title: "Shops", href: "/shops", page: "" },
   ];
 
   return (
@@ -21,10 +21,10 @@ export const Header = () => {
       </div>
       <nav className="hidden lg:flex lg:w-1/2">
         <ul className="px-4 py-2 bg-slate-50 text-xl text-zinc-400 uppercase flex justify-between w-full">
-          {links.map(({ href, title }) => (
+          {links.map(({ href, page, title }) => (
             <li className=" hover:text-zinc-800 " key={href}>
               <Link
-                href={href}
+                href={`${href}/${page}`}
                 className={
                   router.pathname.startsWith(href) ? "text-zinc-800" : ""
                 }
