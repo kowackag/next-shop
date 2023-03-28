@@ -47,7 +47,7 @@ const Men = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
             </li>
           ))}
         </ul>
-        <Pagination path="men" startPage={1} length={10} />
+        <Pagination path="men" startPage={1} length={12} />
       </div>
     </div>
   );
@@ -66,7 +66,7 @@ export const getStaticPaths = async () => {
         },
       };
     }),
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
@@ -91,5 +91,6 @@ export const getStaticProps = async ({
       page: params.page,
       data,
     },
+    revalidate: 60,
   };
 };
