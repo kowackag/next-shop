@@ -66,7 +66,8 @@ export const getStaticPaths = async () => {
         },
       };
     }),
-    fallback: "blocking",
+    fallback: true,
+    // fallback: "blocking",
   };
 };
 
@@ -91,6 +92,6 @@ export const getStaticProps = async ({
       page: params.page,
       data,
     },
-    revalidate: 60,
+    //revalidate: 60,
   };
 };
