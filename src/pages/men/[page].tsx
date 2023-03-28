@@ -47,7 +47,7 @@ const Men = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
             </li>
           ))}
         </ul>
-        <Pagination path="men" startPage={1} length={12} />
+        <Pagination path="men" startPage={1} length={10} />
       </div>
     </div>
   );
