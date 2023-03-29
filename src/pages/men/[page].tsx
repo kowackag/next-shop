@@ -11,7 +11,16 @@ const Men = ({
   error,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   if (!data || error) {
-    return <div className="flex-grow">Some errors with fetchging data....</div>;
+    return (
+      <div className="flex-grow px-8 py-8 text-2xl text-red-800">
+        <p>Some errors with fetching data....</p>
+        {error && (
+          <p className="text-sm italic py-2">{`Details: ${
+            JSON.parse(error).message
+          }`}</p>
+        )}
+      </div>
+    );
   }
 
   return (
@@ -66,7 +75,7 @@ export const getStaticProps = async ({
 
   try {
     const res = await fetch(
-      `https://naszsklep-api.vercel.app/api/produscts?take=${prodByPage}&offset=${offset}`
+      `https://naszsklep-api.vercel.app/api/products?take=${prodByPage}&offset=${offset}`
     );
     const data: ApiDataType[] = await res.json();
     return {
@@ -79,7 +88,7 @@ export const getStaticProps = async ({
   } catch (error) {
     return {
       props: {
-        error: true,
+        error: JSON.stringify(error),
       },
     };
   }
