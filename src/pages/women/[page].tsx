@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Pagination } from "src/components/Pagination";
+import { Pagination } from "src/components/Pagination/Pagination";
 import { Product } from "src/components/Product";
 
 export interface ApiDataType {
@@ -33,14 +33,14 @@ const Women = () => {
   const [pageNum, setPageNum] = useState<number>(1);
 
   useEffect(() => {
-    if(query.page) {
-       setPageNum(Number(query.page))
+    if (query.page) {
+      setPageNum(Number(query.page));
     }
   }, [query.page]);
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["products", pageNum],
-    queryFn: () => getProducts(pageNum)
+    queryFn: () => getProducts(pageNum),
   });
 
   const renderProducts = () => {
@@ -70,7 +70,7 @@ const Women = () => {
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center grow">
           {renderProducts()}
         </ul>
-        <Pagination path="women" startPage={1} length={10} />
+        <Pagination path="women" length={10} />
       </div>
     </div>
   );

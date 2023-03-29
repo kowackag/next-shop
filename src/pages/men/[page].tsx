@@ -1,6 +1,6 @@
 import { InferGetStaticPropsType, GetStaticPropsContext } from "next";
 import React from "react";
-import { Pagination } from "src/components/Pagination";
+import { Pagination } from "src/components/Pagination/Pagination";
 import { Product } from "src/components/Product";
 
 export interface ApiDataType {
@@ -47,7 +47,7 @@ const Men = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
             </li>
           ))}
         </ul>
-        <Pagination path="men" startPage={1} length={10} />
+        <Pagination path="men" length={10} />
       </div>
     </div>
   );
