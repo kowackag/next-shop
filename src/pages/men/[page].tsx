@@ -10,12 +10,12 @@ const Men = ({
   data,
   error,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  if (!data) {
-    return <div>{error}</div>;
+  if (!data || error) {
+    return <div className="flex-grow">Some errors with fetchging data....</div>;
   }
 
   return (
-    <div className="px-8 py-8 mx-2 flex">
+    <div className="px-8 py-8 mx-2 flex flex-grow">
       <div className="hidden lg:block w-1/4 text-4xl">Filters</div>
       <div className="grow">
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center grow">
@@ -63,26 +63,24 @@ export const getStaticProps = async ({
     };
   }
   const offset = (Number(params.page) - 1) * prodByPage;
-  const res = await fetch(
-    `https://naszsklep-api.vercel.app/api/products?take=${prodByPage}&offset=${offset}`
-  );
 
-  let error = "";
-
-  // if (!res.ok) {
-  //   console.log(`Failed to , received status ${res.status}`);
-  //   error = `Failed to , received status ${res.status}`;
-  //   return null;
-  // }
-
-  const data: ApiDataType[] = await res.json();
-
-  return {
-    props: {
-      page: params.page,
-      data,
-      error,
-    },
-    //revalidate: 60,
-  };
+  try {
+    const res = await fetch(
+      `https://naszsklep-api.vercel.app/api/produscts?take=${prodByPage}&offset=${offset}`
+    );
+    const data: ApiDataType[] = await res.json();
+    return {
+      props: {
+        page: params.page,
+        data,
+      },
+      //revalidate: 60,
+    };
+  } catch (error) {
+    return {
+      props: {
+        error: true,
+      },
+    };
+  }
 };

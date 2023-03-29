@@ -10,9 +10,11 @@ const queryClient = new QueryClient();
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
+      </div>
     </QueryClientProvider>
   );
 }
