@@ -3,35 +3,7 @@ import { PriceBox } from "src/components/PriceBox/PriceBox";
 import { ImageBox } from "src/components/ImageBox/ImageBox";
 import { SizeBox } from "src/components/SizeBox/SizeBox";
 import { ColorBox } from "./ColorBox/ColorBox";
-
-interface ProductDetailsProps {
-  colors: string[];
-  sizes: string[];
-  description: string;
-  title: string;
-  price: string;
-  newPrice?: string;
-  discount?: string;
-  images: {
-    src: string;
-    alt: string;
-  }[];
-}
-
-export interface ApiDataType {
-  id: string;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: Rating;
-}
-
-export interface Rating {
-  rate: number;
-  count: number;
-}
+import { ProductDetailsProps } from "src/constans/types";
 
 export const ProductDetails = ({
   colors,
@@ -72,9 +44,7 @@ export const ProductDetails = ({
                     className="w-12 rounded border-gray-200 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                   />
                 </div>
-                <button
-                  className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white"
-                >
+                <button className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white">
                   Add to Cart
                 </button>
               </div>

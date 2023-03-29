@@ -1,27 +1,8 @@
 import React from "react";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { ProductDetails } from "src/components/ProductDetails";
+import { ApiDataType, InferGetStaticPathsType } from "src/constans/types";
 
-export type InferGetStaticPathsType<T> = T extends () => Promise<{
-  paths: Array<{ params: infer R }>;
-}>
-  ? R
-  : never;
-
-export interface ApiDataType {
-  id: string;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: Rating;
-}
-
-export interface Rating {
-  rate: number;
-  count: number;
-}
 
 const ProductId = ({
   data,
