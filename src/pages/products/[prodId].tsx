@@ -39,7 +39,7 @@ export const getStaticPaths = async () => {
         },
       };
     }),
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
@@ -61,6 +61,6 @@ export const getStaticProps = async ({
       page: params.prodId,
       data,
     },
-    //revalidate: 10,
+    revalidate: 10,
   };
 };

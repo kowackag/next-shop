@@ -10,7 +10,7 @@ const Men = ({
   data,
   error,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  if (!data || error) {
+  if (error) {
     return (
       <div className="flex-grow px-8 py-8 text-2xl text-red-800">
         <p>Some errors with fetching data....</p>
@@ -19,6 +19,13 @@ const Men = ({
             JSON.parse(error).message
           }`}</p>
         )}
+      </div>
+    );
+  }
+  if (!data) {
+    return (
+      <div className="flex-grow px-8 py-8 text-2xl text-zinc-700">
+        <p>Loading....</p>
       </div>
     );
   }
