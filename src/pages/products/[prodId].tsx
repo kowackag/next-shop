@@ -61,6 +61,6 @@ export const getStaticProps = async ({
       page: params.prodId,
       data,
     },
-    revalidate: 10,
+    //revalidate: 10,
   };
 };
