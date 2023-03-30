@@ -90,7 +90,7 @@ export const getStaticProps = async ({
         page: params.page,
         data,
       },
-      //revalidate: 60,
+      revalidate: 10,
     };
   } catch (error) {
     return {
