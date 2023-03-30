@@ -4,7 +4,7 @@ import { Pagination } from "src/components/Pagination/Pagination";
 import { Product } from "src/components/Product";
 import { ApiDataType, InferGetStaticPathsType } from "src/constans/types";
 
-const prodByPage = 12;
+const prodByPage = 9;
 
 const Men = ({
   data,

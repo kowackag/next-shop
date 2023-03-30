@@ -5,7 +5,7 @@ import { Pagination } from "src/components/Pagination/Pagination";
 import { Product } from "src/components/Product";
 import { ApiDataType } from "src/constans/types";
 
-const getProducts = async (page = 1, num = 10) => {
+const getProducts = async (page = 1, num = 9) => {
   const offset = (page - 1) * num;
   const res = await fetch(
     `https://naszsklep-api.vercel.app/api/products?take=${num}&offset=${offset}`
@@ -31,7 +31,7 @@ const Women = () => {
 
   const renderProducts = () => {
     if (isLoading) {
-      return <div className="w-max">Loading</div>;
+      return <div className="w-max flex-grow px-8 py-8 text-2xl">Loading</div>;
     }
     if (isError || !data) {
       return <div>Error</div>;
