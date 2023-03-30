@@ -3,11 +3,9 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { ProductDetails } from "src/components/ProductDetails";
 import { ApiDataType, InferGetStaticPathsType } from "src/constans/types";
 
-
 const ProductId = ({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-
   if (!data) {
     return <div>upsss</div>;
   }
@@ -28,18 +26,20 @@ const ProductId = ({
 export default ProductId;
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`https://naszsklep-api.vercel.app/api/products/?take=250&offset=0`);
+  const res = await fetch(
+    `https://naszsklep-api.vercel.app/api/products/?take=250&offset=0`
+  );
   const data: ApiDataType[] = await res.json();
   return {
     paths: data.map((item) => {
-      console.log()
+      console.log();
       return {
         params: {
           prodId: item.id,
         },
       };
     }),
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
@@ -61,5 +61,6 @@ export const getStaticProps = async ({
       page: params.prodId,
       data,
     },
+    revalidate: 10,
   };
 };
