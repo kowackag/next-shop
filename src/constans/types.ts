@@ -1,22 +1,24 @@
 export interface ProductDetailsProps {
-    colors: string[];
-    sizes: string[];
-    description: string;
-    title: string;
-    price: string;
-    newPrice?: string;
-    discount?: string;
-    images: {
-      src: string;
-      alt: string;
-    }[];
-  }
-  
+  colors: string[];
+  sizes: string[];
+  description: string;
+  longDescription: string;
+  title: string;
+  price: string;
+  newPrice?: string;
+  discount?: string;
+  images: {
+    src: string;
+    alt: string;
+  }[];
+}
+
 export interface ApiDataType {
   id: string;
   title: string;
   price: number;
   description: string;
+  longDescription: string;
   category: string;
   image: string;
   rating: Rating;
@@ -28,7 +30,7 @@ export interface Rating {
 }
 
 export type InferGetStaticPathsType<T> = T extends () => Promise<{
-    paths: Array<{ params: infer R }>;
-  }>
-    ? R
-    : never;
+  paths: Array<{ params: infer R }>;
+}>
+  ? R
+  : never;

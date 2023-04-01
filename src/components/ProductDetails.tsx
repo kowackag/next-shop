@@ -4,7 +4,7 @@ import { ImageBox } from "src/components/ImageBox/ImageBox";
 import { SizeBox } from "src/components/SizeBox/SizeBox";
 import { ColorBox } from "./ColorBox/ColorBox";
 import { ProductDetailsProps } from "src/constans/types";
-
+import ReactMarkdown from "react-markdown";
 export const ProductDetails = ({
   colors,
   sizes,
@@ -14,6 +14,7 @@ export const ProductDetails = ({
   newPrice,
   discount,
   images,
+  longDescription,
 }: ProductDetailsProps) => {
   return (
     <section>
@@ -28,6 +29,9 @@ export const ProductDetails = ({
             <div className="mt-4">
               <div className="prose max-w-none">
                 <p>{description}</p>
+                <article className="prose lg:prose-xl">
+                  <ReactMarkdown>{longDescription}</ReactMarkdown>
+                </article>
               </div>
             </div>
 

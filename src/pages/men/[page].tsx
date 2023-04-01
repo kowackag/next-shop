@@ -31,7 +31,7 @@ const Men = ({
   }
 
   return (
-    <div className="px-8 py-8 mx-2 flex flex-grow">
+    <div className="px-8 py-8 mx-2 flex">
       <div className="hidden lg:block w-1/4 text-4xl">Filters</div>
       <div className="grow">
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center grow">

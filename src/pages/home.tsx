@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { Footer } from "src/components/Footer";
-import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
 
 const DATA = {

@@ -19,6 +19,7 @@ const ProductId = ({
       discount="-15%"
       newPrice="99 EUR"
       images={[{ src: data.image, alt: data.title }]}
+      longDescription={data.longDescription}
     />
   );
 };
