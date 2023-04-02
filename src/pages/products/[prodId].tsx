@@ -2,6 +2,7 @@ import React from "react";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { ProductDetails } from "src/components/ProductDetails";
 import { ApiDataType, InferGetStaticPathsType } from "src/constans/types";
+import Head from "next/head";
 
 const ProductId = ({
   data,
@@ -10,17 +11,23 @@ const ProductId = ({
     return <div>upsss</div>;
   }
   return (
-    <ProductDetails
-      colors={["red"]}
-      title={data.title}
-      description={data.description}
-      price={data.price.toString()}
-      sizes={["xs", "40"]}
-      discount="-15%"
-      newPrice="99 EUR"
-      images={[{ src: data.image, alt: data.title }]}
-      longDescription={data.longDescription}
-    />
+    <>
+      <Head>
+        <title>{data.title}</title>
+      </Head>
+      <ProductDetails
+        id={data.id}
+        colors={["red"]}
+        title={data.title}
+        description={data.description}
+        price={data.price.toString()}
+        sizes={["xs", "40"]}
+        discount="-15%"
+        newPrice="99 EUR"
+        images={[{ src: data.image, alt: data.title }]}
+        longDescription={data.longDescription}
+      />
+    </>
   );
 };
 

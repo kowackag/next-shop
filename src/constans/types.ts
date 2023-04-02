@@ -1,4 +1,5 @@
 export interface ProductDetailsProps {
+  id: string;
   colors: string[];
   sizes: string[];
   description: string;

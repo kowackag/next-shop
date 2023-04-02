@@ -5,7 +5,10 @@ import { SizeBox } from "src/components/SizeBox/SizeBox";
 import { ColorBox } from "./ColorBox/ColorBox";
 import { ProductDetailsProps } from "src/constans/types";
 import ReactMarkdown from "react-markdown";
+import { NextSeo } from "next-seo";
+
 export const ProductDetails = ({
+  id,
   colors,
   sizes,
   title,
@@ -20,6 +23,27 @@ export const ProductDetails = ({
     <section>
       <div className="relative mx-auto max-w-screen-xl px-4 py-8 text-zinc-800">
         <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
+          <>
+            <NextSeo
+              title={title}
+              description={description}
+              canonical={`https://naszsklep-api.vercel.app/api/products/${id}`}
+              openGraph={{
+                url: `https://naszsklep-api.vercel.app/api/products/${id}`,
+                title: title,
+                description: description,
+                images: images.map((item) => {
+                  return {
+                    url: item.src,
+                    alt: item.alt,
+                    type: "image/jpeg",
+                  };
+                }),
+                siteName: "SiteName",
+              }}
+            />
+            <p>eminent sklep</p>
+          </>
           <ImageBox images={images} />
           <div className="sticky top-0">
             <div className="max-w-[35ch] space-y-2 mt-8">
@@ -29,7 +53,7 @@ export const ProductDetails = ({
             <div className="mt-4">
               <div className="prose max-w-none">
                 <p>{description}</p>
-                <article className="prose lg:prose-xl">
+                <article className="prose lg:prose-md">
                   <ReactMarkdown>{longDescription}</ReactMarkdown>
                 </article>
               </div>
