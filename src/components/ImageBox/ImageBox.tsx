@@ -17,8 +17,9 @@ export const ImageBox = ({ images }: ImagesBoxProps) => {
         <Image
           alt={images[0].alt}
           src={images[0].src}
-          fill
-          unoptimized={true}
+          width={160}
+          height={90}
+          // unoptimized={true}
           crossOrigin="anonymous"
           priority
         />
@@ -34,8 +35,9 @@ export const ImageBox = ({ images }: ImagesBoxProps) => {
               <Image
                 alt={item.alt}
                 src={item.src}
-                fill
-                unoptimized={true}
+                width={160}
+                height={90}
+                // unoptimized={true}
                 crossOrigin="anonymous"
               />
             </div>
