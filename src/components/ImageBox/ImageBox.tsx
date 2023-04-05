@@ -13,13 +13,13 @@ interface Image {
 export const ImageBox = ({ images }: ImagesBoxProps) => {
   return (
     <div className="grid grid-cols-2 gap-4 md:grid-cols-1 ">
-      <div className="aspect-square w-full rounded-xl object-cover relative">
+      <div className="h-auto flex w-full center relative aspect-square">
         <Image
           alt={images[0].alt}
           src={images[0].src}
-          width={160}
-          height={90}
-          // unoptimized={true}
+          fill
+          unoptimized={true}
+          className="object-contain"
           crossOrigin="anonymous"
           priority
         />
@@ -37,7 +37,7 @@ export const ImageBox = ({ images }: ImagesBoxProps) => {
                 src={item.src}
                 width={160}
                 height={90}
-                // unoptimized={true}
+                unoptimized={true}
                 crossOrigin="anonymous"
               />
             </div>
