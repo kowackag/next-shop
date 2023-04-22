@@ -1,11 +1,12 @@
 import React, { useState, MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useCartState } from "./Cart/CartContext";
 
 interface ProductProps {
   id: string;
   title: string;
-  price: string;
+  price: number;
   newPrice?: string;
   discount?: string;
   image: {
@@ -23,6 +24,8 @@ export const Product = ({
   discount,
 }: ProductProps) => {
   const [isFavouriteList, setIsFavouriteList] = useState(false);
+
+  const cartState = useCartState()
 
   const addToFavourite = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -90,7 +93,12 @@ export const Product = ({
         </div>
       </Link>
       <div className="mx-auto">
-        <button className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white opacity-70 hover:opacity-100 transition-opacity duration-500">
+        <button onClick={()=>cartState.addItemToCart({
+          price: price,
+          id: id,
+          title: title,
+          amount: 1,
+        })} className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white opacity-70 hover:opacity-100 transition-opacity duration-500">
           Add to Cart
         </button>
       </div>
