@@ -42,7 +42,6 @@ export const ProductDetails = ({
                 siteName: "SiteName",
               }}
             />
-            <p>eminent sklep</p>
           </>
           <ImageBox images={images} />
           <div className="sticky top-0">

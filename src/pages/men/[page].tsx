@@ -10,6 +10,8 @@ const Men = ({
   data,
   error,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+
+  
   if (error) {
     return (
       <div className="flex-grow px-8 py-8 text-2xl text-red-800">
@@ -36,7 +38,7 @@ const Men = ({
       <div className="grow">
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center grow">
           {data.map((item) => (
-            <li key={item.id}>
+            <li key={item.id} className="flex">
               <Product
                 id={item.id.toString()}
                 title={item.title}

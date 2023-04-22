@@ -10,12 +10,12 @@ interface LayoutProps {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="flex flex-col min-h-screen">
-        <Head>
-            <title>eminent shop</title>
-            <meta name="description" content="eminent shop" />
-        </Head>
+      <Head>
+        <title>eminent shop</title>
+        <meta name="description" content="eminent shop" />
+      </Head>
       <Header />
-      <div className="flex-fgrow">{children}</div>
+      <div className="flex-grow">{children}</div>
       <Footer />
     </div>
   );
