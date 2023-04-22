@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState, useContext } from "react";
 
 interface CartItem {
   id: string;
@@ -11,6 +11,7 @@ interface CartItem {
 
 interface CartState {
   items: CartItem[];
+ // addItemtoCart():  
 }
 
 export const CartStateContext = createContext<CartState | null>(null);
@@ -37,4 +38,12 @@ export const CartStateContextProvider = ({
       {children}
     </CartStateContext.Provider>
   );
+};
+
+export const useCartState = () => {
+  const cartState = useContext(CartStateContext);
+  if (!cartState) {
+    throw new Error("Error with CartStateContext");
+  }
+  return cartState;
 };
