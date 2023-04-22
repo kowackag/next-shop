@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-import { AiOutlineHeart } from "react-icons/ai";
 
 interface ProductProps {
   id: string;
@@ -26,12 +24,11 @@ export const Product = ({
 }: ProductProps) => {
   const [isFavouriteList, setIsFavouriteList] = useState(false);
 
-  const addToFavourite = (e) => {
+  const addToFavourite = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    // if (e.target)
     setIsFavouriteList(!isFavouriteList);
   };
-  console.log(isFavouriteList);
+
   return (
     <div className=" relative w-full group mx-6 my-4 md:px-8 md:py-8 border-solid border-[1px] border-zinc-50 hover:border-zinc-100 bg-white duration-500 transition-shadow flex flex-col shadow-md hover:shadow-xl">
       <div>
