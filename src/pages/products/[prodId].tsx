@@ -23,7 +23,7 @@ const ProductId = ({
         price={data.price.toString()}
         sizes={["xs", "40"]}
         discount="-15%"
-        newPrice="99 EUR"
+        newPrice={99}
         images={[{ src: data.image, alt: data.title }]}
         longDescription={data.longDescription}
       />

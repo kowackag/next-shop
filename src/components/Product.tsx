@@ -7,7 +7,9 @@ interface ProductProps {
   id: string;
   title: string;
   price: number;
-  newPrice?: string;
+  newPrice?: number;
+  sizes?: string[];
+  colors?: string[];
   discount?: string;
   image: {
     src: string;
@@ -22,7 +24,10 @@ export const Product = ({
   price,
   newPrice,
   discount,
+  colors,
+  sizes
 }: ProductProps) => {
+
   const [isFavouriteList, setIsFavouriteList] = useState(false);
 
   const cartState = useCartState()
@@ -95,9 +100,13 @@ export const Product = ({
       <div className="mx-auto">
         <button onClick={()=>cartState.addItemToCart({
           price: price,
+          newPrice: newPrice,
           id: id,
           title: title,
           amount: 1,
+          color: colors && colors[0],
+          size: sizes && sizes[0],
+          image: image[0],
         })} className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white opacity-70 hover:opacity-100 transition-opacity duration-500">
           Add to Cart
         </button>
