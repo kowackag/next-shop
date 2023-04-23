@@ -7,7 +7,10 @@ export interface ApiDataType {
   id: string;
   title: string;
   price: number;
+  newPrice?: number;
   description: string;
+  sizes?: string[];
+  colors?: string[];
   category: string;
   image: string;
   rating: Rating;
@@ -23,7 +26,8 @@ const products = [
     id: "1",
     colors: ["red", "blue", "black"],
     title: "New bracket",
-    price: "139 EUR",
+    price: 139,
+    sizes: ["s"],
     image: [
       {
         src: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
@@ -35,8 +39,8 @@ const products = [
     id: "2",
     colors: ["red", "blue", "black"],
     title: "Limited Edition Sports Trainer",
-    price: "139 EUR",
-    newPrice: "119 EUR",
+    price: 169,
+    newPrice: 119,
     discount: "-19%",
     image: [
       {
@@ -64,8 +68,9 @@ const Men = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 title={item.title}
                 price={item.price}
                 discount={item.discount}
-                newPrice={item.newPrice}
+                newPrice={item?.newPrice}
                 image={item.image}
+                sizes={item.sizes || ["s"]}
               />
             </li>
           ))}
@@ -75,8 +80,11 @@ const Men = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
               <Product
                 id={item.id.toString()}
                 title={item.title}
-                price={item.price.toString()}
+                price={item.price}
+                newPrice={item?.newPrice}
+                colors={item?.colors}
                 image={[{ src: item.image, alt: item.title }]}
+                sizes={item.sizes || ["s"]}
               />
             </li>
           ))}

@@ -6,7 +6,7 @@ export interface ProductDetailsProps {
   longDescription: string;
   title: string;
   price: string;
-  newPrice?: string;
+  newPrice?: number;
   discount?: string;
   images: {
     src: string;
@@ -18,9 +18,12 @@ export interface ApiDataType {
   id: string;
   title: string;
   price: number;
+  newPrice?: number;
   description: string;
   longDescription: string;
   category: string;
+  colors: string[];
+  sizes: string[];
   image: string;
   rating: Rating;
 }

@@ -42,8 +42,11 @@ const Men = ({
               <Product
                 id={item.id.toString()}
                 title={item.title}
-                price={item.price.toString()}
+                price={item.price}
+                newPrice={item.newPrice}
                 image={[{ src: item.image, alt: item.title }]}
+                colors={item.colors}
+                sizes={item.sizes || ["s"]}
               />
             </li>
           ))}
