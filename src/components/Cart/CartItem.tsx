@@ -1,14 +1,16 @@
 import React from "react";
 import Image from "next/image";
-import { CartItem as CartItemTypes } from "./CartContext";
+import { CartItem as CartItemTypes, useCartState } from "./CartContext";
 
 interface CartItemProps {
   prod: CartItemTypes;
 }
 
 export const CartItem = ({ prod }: CartItemProps) => {
+    const cartState = useCartState();
+
   return (
-    <li className="flex items-center gap-4 responsive" key={prod.id}>
+    <li className="flex items-center gap-4 responsive">
       <Image
         src={prod.image.src}
         alt={prod.image.alt}
@@ -58,7 +60,7 @@ export const CartItem = ({ prod }: CartItemProps) => {
           } EUR`}</p>
         </form>
 
-        <button className="text-gray-600 transition pl-4 hover:text-red-700">
+        <button onClick={()=>cartState.removeItemFromCart(prod.id)} className="text-gray-600 transition pl-4 hover:text-red-700">
           <span className="sr-only">Remove item</span>
 
           <svg

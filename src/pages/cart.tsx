@@ -4,31 +4,6 @@ import { CartItem } from "src/components/Cart/CartItem";
 
 const CartPage = () => {
   const cartState = useCartState();
-  const [products, setProducts] = useState(cartState);
-
-  const [totalPrice, setTotalPrice] = useState(
-    products.items.reduce((acc, curr) => {
-      const price = curr.newPrice
-        ? curr.newPrice * curr.amount
-        : curr.price * curr.amount;
-      return acc + price;
-    }, 0)
-  );
-
-  useEffect(() => {
-    const sum = products.items.reduce((acc, curr) => {
-      const price = curr.newPrice
-        ? curr.newPrice * curr.amount
-        : curr.price * curr.amount;
-      return acc + price;
-    }, 0);
-    setTotalPrice(sum);
-  }, [products, cartState]);
-
-  useEffect(() => {
-    setTotalPrice(cartState.items.reduce((acc, curr) => acc + curr.price, 0));
-  }, [cartState]);
-
   return (
     <section>
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -56,7 +31,7 @@ const CartPage = () => {
                   <dl className="space-y-0.5 text-sm text-gray-700">
                     <div className="flex justify-between !text-base font-medium">
                       <p className="text-[20px]">Total Price</p>
-                      <p>{totalPrice} EUR</p>
+                      <p>{cartState.totalPrice} EUR</p>
                     </div>
                   </dl>
 
