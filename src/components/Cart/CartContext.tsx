@@ -16,7 +16,9 @@ export type CartItem = {
 
 interface CartState {
   readonly items: readonly CartItem[];
-  addItemToCart: (product: CartItem) => void;
+  readonly addItemToCart: (product: CartItem) => void;
+  readonly removeItemFromCart: (id: CartItem["id"]) => void;
+  readonly totalPrice: number;
 }
 
 export const CartStateContext = createContext<CartState | null>(null);
@@ -48,6 +50,15 @@ export const CartStateContextProvider = ({
             }
           });
         },
+        removeItemFromCart: (id) => {
+          setCartItems((prevState) => prevState.filter((el) => el.id !== id));
+        },
+        totalPrice: cartItems.reduce((acc, curr) => {
+          const price = curr.newPrice
+            ? curr.newPrice * curr.amount
+            : curr.price * curr.amount;
+          return acc + price;
+        }, 0),
       }}
     >
       {children}
