@@ -23,8 +23,8 @@ export const CartBar = () => {
         </svg>
       </div>
       {items && items.length > 0 && (
-        <div className="bg-red-700 rounded-full text-[10px] w-5 h-5 absolute top-5 left-3 font-bold text-white flex items-center justify-center tracking-tighter">
-          {items.length > 10 ? "9+" : items.length}
+        <div className="bg-red-700 rounded-full text-[10px] w-5 h-5 absolute top-5 left-3 font-bold text-white flex items-center justify-center">
+          {items.length}
         </div>
       )}
     </li>

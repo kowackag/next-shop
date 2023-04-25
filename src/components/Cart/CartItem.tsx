@@ -7,7 +7,7 @@ interface CartItemProps {
 }
 
 export const CartItem = ({ prod }: CartItemProps) => {
-    const cartState = useCartState();
+  const cartState = useCartState();
 
   return (
     <li className="flex items-center gap-4 responsive">
@@ -60,7 +60,10 @@ export const CartItem = ({ prod }: CartItemProps) => {
           } EUR`}</p>
         </form>
 
-        <button onClick={()=>cartState.removeItemFromCart(prod.id)} className="text-gray-600 transition pl-4 hover:text-red-700">
+        <button
+          onClick={() => cartState.removeItemFromCart(prod.id)}
+          className="text-gray-600 transition pl-4 hover:text-red-700"
+        >
           <span className="sr-only">Remove item</span>
 
           <svg
