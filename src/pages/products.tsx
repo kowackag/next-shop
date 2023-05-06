@@ -9,6 +9,7 @@ interface Product {
   id: string;
   name: string;
   price: number;
+  slug: string;
   images: {
     url: string;
   }[];
@@ -31,19 +32,20 @@ const Products = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
       <div className="hidden lg:block w-1/4 text-4xl">Filters</div>
       <div className="grow">
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center grow">
-          {data && data.products.map((item) => (
-            <li key={item.id} className="flex">
-              <Product
-                id={item.id}
-                title={item.name}
-                price={item.price}
-                newPrice={item.price}
-                image={[{ src: item.images[0].url, alt: item.name }]}
-                // colors={item.colors || ["red"]}
-                // sizes={item.sizes || ["s"]}
-              />
-            </li>
-          ))}
+          {data &&
+            data.products.map((item) => (
+              <li key={item.id} className="flex" id={item.id}>
+                <Product
+                  id={item.id}
+                  title={item.name}
+                  price={item.price}
+                  newPrice={item.price}
+                  image={[{ src: item.images[0].url, alt: item.name }]}
+                  // colors={item.colors || ["red"]}
+                  // sizes={item.sizes || ["s"]}
+                />
+              </li>
+            ))}
         </ul>
         <Pagination path="men" length={10} />
       </div>
@@ -61,6 +63,7 @@ export const getStaticProps = async () => {
           id
           name
           price
+          slug
           images {
             url
             width
