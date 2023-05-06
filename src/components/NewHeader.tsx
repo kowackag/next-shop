@@ -39,26 +39,26 @@ export const NewHeader = () => {
             >
               About
             </Link>
-            <a
+            <Link
               href="/news"
               className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700"
             >
               News
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/products"
               className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700"
             >
               Products
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/contact"
               className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700"
             >
               Contact
-            </a>
+            </Link>
           </nav>
 
           <div className="flex items-center">
