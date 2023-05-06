@@ -19,11 +19,7 @@ interface ProductProps {
 }
 
 const Product = ({ data }: ProductProps) => {
-  const {
-    loading,
-    error,
-    data: products,
-  } = useQuery(gql`
+  const { data: products } = useQuery(gql`
     query Assets {
       products {
         id
