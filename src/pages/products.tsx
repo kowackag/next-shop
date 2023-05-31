@@ -34,9 +34,9 @@ const Products = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center grow">
           {data &&
             data.products.map((item) => (
-              <li key={item.id} className="flex" id={item.id}>
+              <li key={item.id} className="flex" id={item.slug}>
                 <Product
-                  id={item.id}
+                  id={item.slug}
                   title={item.name}
                   price={item.price}
                   newPrice={item.price}
