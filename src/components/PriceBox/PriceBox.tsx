@@ -20,10 +20,10 @@ export const PriceBox = ({ price, newPrice, discount }: PriceBoxProps) => {
             discount ? "line-through" : ""
           } `}
         >
-          {price}
+          {`${price} EUR`}
         </p>
         {newPrice && (
-          <p className="text-xl font-bold text-red-700">{newPrice}</p>
+          <p className="text-xl font-bold text-red-700"> {`${newPrice} EUR`}</p>
         )}
       </div>
     </div>
