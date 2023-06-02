@@ -1,23 +1,10 @@
-import { InferGetStaticPropsType, GetStaticPropsContext } from "next";
+import { InferGetStaticPropsType } from "next";
 import React from "react";
 import { Pagination } from "src/components/Pagination/Pagination";
 import { Product } from "src/components/Product";
 import { apolloClient } from "src/graphql/apolloClient";
-import { gql } from "@apollo/client";
 
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  slug: string;
-  images: {
-    url: string;
-  }[];
-}
-
-interface GetProductListResponse {
-  products: Product[];
-}
+import { GetProductsDocument, GetProductsQuery } from "generated/graphql";
 
 const Products = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   if (!data) {
@@ -56,22 +43,8 @@ const Products = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default Products;
 
 export const getStaticProps = async () => {
-  const { data } = await apolloClient.query<GetProductListResponse>({
-    query: gql`
-      query getProduts {
-        products {
-          id
-          name
-          price
-          slug
-          images {
-            url
-            width
-            height
-          }
-        }
-      }
-    `,
+  const { data } = await apolloClient.query<GetProductsQuery>({
+    query: GetProductsDocument,
   });
   return {
     props: {

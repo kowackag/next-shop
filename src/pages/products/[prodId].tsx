@@ -5,25 +5,15 @@ import { InferGetStaticPathsType } from "src/constans/types";
 import Head from "next/head";
 import Link from "next/link";
 import { apolloClient } from "src/graphql/apolloClient";
-import { gql } from "@apollo/client";
 
-interface ProductResponse {
-  product: Product;
-}
+import {
+  GetProductDetailsBySlugDocument,
+  GetProductDetailsBySlugQuery,
+  GetProductDetailsBySlugQueryVariables,
+  GetProductsSlugsDocument,
+  GetProductsSlugsQuery,
+} from "generated/graphql";
 
-interface Product {
-  slug: string;
-  name: string;
-  description: string;
-  longDescription: string;
-  price: number;
-  images: {
-    url: string;
-  }[];
-}
-interface GetProductListResponse {
-  products: Product[];
-}
 const ProductId = ({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -62,14 +52,8 @@ const ProductId = ({
 export default ProductId;
 
 export const getStaticPaths = async () => {
-  const { data } = await apolloClient.query<GetProductListResponse>({
-    query: gql`
-      query getProdutsSlugs {
-        products {
-          slug
-        }
-      }
-    `,
+  const { data } = await apolloClient.query<GetProductsSlugsQuery>({
+    query: GetProductsSlugsDocument,
   });
   return {
     paths: data.products.map((item) => {
@@ -92,26 +76,15 @@ export const getStaticProps = async ({
       notFound: true,
     };
   }
-  const { data } = await apolloClient.query<ProductResponse, { slug: string }>({
+  const { data } = await apolloClient.query<
+    GetProductDetailsBySlugQuery,
+    GetProductDetailsBySlugQueryVariables
+  >({
     variables: { slug: params.prodId },
-    query: gql`
-      query getProdutBySlug($slug: String) {
-        product(where: { slug: $slug }) {
-          id
-          slug
-          name
-          description
-
-          price
-          images {
-            url
-          }
-        }
-      }
-    `,
+    query: GetProductDetailsBySlugDocument,
   });
 
-  if (!data) {
+  if (!data.product) {
     return {
       props: {},
       notFound: true,
@@ -120,7 +93,10 @@ export const getStaticProps = async ({
 
   return {
     props: {
-      data: data.product,
+      data: {
+        ...data.product,
+        longDescription: await data.product.description,
+      },
     },
   };
 };

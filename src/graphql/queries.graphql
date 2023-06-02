@@ -1,4 +1,4 @@
-query getProduts {
+query getProducts {
   products {
     id
     name
@@ -12,13 +12,13 @@ query getProduts {
   }
 }
 
-query getProdutsSlugs {
+query getProductsSlugs {
   products {
     slug
   }
 }
 
-query getProdutBySlug($slug: String) {
+query getProductDetailsBySlug($slug: String) {
   product(where: { slug: $slug }) {
     id
     slug
