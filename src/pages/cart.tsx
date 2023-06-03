@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useCartState } from "src/components/Cart/CartContext";
 import { CartItem } from "src/components/Cart/CartItem";
@@ -60,12 +61,12 @@ const CartPage = () => {
                   </div>
 
                   <div className="flex justify-end">
-                    <a
-                      href="#"
-                      className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
+                    <Link
+                      href="checkout"
+                      className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white opacity-80 hover:opacity-100 transition-opacity duration-500"
                     >
                       Checkout
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

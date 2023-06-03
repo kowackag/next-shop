@@ -48,7 +48,7 @@ export const CartStateContextProvider = ({
       return [];
     }
   };
-  console.log("cartItems", cartItems);
+
   const setCartItemsInStorage = (cartItems: CartItem[]) => {
     localStorage.setItem("SHOPPING_CART", JSON.stringify(cartItems));
   };
