@@ -1,25 +1,20 @@
-import { InferGetStaticPropsType, GetStaticPropsContext } from "next";
-import React from "react";
+import { InferGetStaticPropsType } from "next";
+import React, { useEffect, useState } from "react";
 import { Pagination } from "src/components/Pagination/Pagination";
 import { Product } from "src/components/Product";
 import { apolloClient } from "src/graphql/apolloClient";
-import { gql } from "@apollo/client";
 
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  slug: string;
-  images: {
-    url: string;
-  }[];
-}
-
-interface GetProductListResponse {
-  products: Product[];
-}
+import { GetProductsDocument, GetProductsQuery } from "generated/graphql";
 
 const Products = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const [pages, setPages] = useState(1);
+
+  useEffect(() => {
+    if (data) {
+      setPages(Math.ceil(data.products.length / 3));
+    }
+  }, [data]);
+
   if (!data) {
     return (
       <div className="flex-grow px-8 py-8 text-2xl text-zinc-700">
@@ -27,6 +22,7 @@ const Products = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
       </div>
     );
   }
+
   return (
     <div className="px-8 py-8 mx-2 flex">
       <div className="hidden lg:block w-1/4 text-4xl">Filters</div>
@@ -47,7 +43,7 @@ const Products = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
               </li>
             ))}
         </ul>
-        <Pagination path="men" length={10} />
+        {/* <Pagination path="products" length={pages} /> */}
       </div>
     </div>
   );
@@ -56,22 +52,8 @@ const Products = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default Products;
 
 export const getStaticProps = async () => {
-  const { data } = await apolloClient.query<GetProductListResponse>({
-    query: gql`
-      query getProduts {
-        products {
-          id
-          name
-          price
-          slug
-          images {
-            url
-            width
-            height
-          }
-        }
-      }
-    `,
+  const { data } = await apolloClient.query<GetProductsQuery>({
+    query: GetProductsDocument,
   });
   return {
     props: {

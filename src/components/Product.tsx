@@ -107,7 +107,7 @@ export const Product = ({
           color: colors && colors[0],
           size: sizes && sizes[0],
           image: image[0],
-        })} className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white opacity-70 hover:opacity-100 transition-opacity duration-500">
+        })} className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white opacity-80 hover:opacity-100 transition-opacity duration-500">
           Add to Cart
         </button>
       </div>
