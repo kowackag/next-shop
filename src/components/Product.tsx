@@ -25,12 +25,11 @@ export const Product = ({
   newPrice,
   discount,
   colors,
-  sizes
+  sizes,
 }: ProductProps) => {
-
   const [isFavouriteList, setIsFavouriteList] = useState(false);
 
-  const cartState = useCartState()
+  const cartState = useCartState();
 
   const addToFavourite = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -98,16 +97,21 @@ export const Product = ({
         </div>
       </Link>
       <div className="mx-auto">
-        <button onClick={()=>cartState.addItemToCart({
-          price: price,
-          newPrice: newPrice,
-          id: id,
-          title: title,
-          amount: 1,
-          color: colors && colors[0],
-          size: sizes && sizes[0],
-          image: image[0],
-        })} className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white opacity-80 hover:opacity-100 transition-opacity duration-500">
+        <button
+          onClick={() =>
+            cartState.addItemToCart({
+              price: price,
+              newPrice: newPrice,
+              id: id,
+              title: title,
+              amount: 1,
+              color: colors && colors[0],
+              size: sizes && sizes[0],
+              image: image[0],
+            })
+          }
+          className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white opacity-80 hover:opacity-100 transition-opacity duration-500"
+        >
           Add to Cart
         </button>
       </div>

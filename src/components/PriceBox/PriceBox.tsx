@@ -1,7 +1,7 @@
 import React from "react";
 
 interface PriceBoxProps {
-  price: string;
+  price: number;
   newPrice?: number;
   discount?: string;
 }
