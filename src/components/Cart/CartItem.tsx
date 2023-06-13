@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { CartItem as CartItemTypes, useCartState } from "./CartContext";
 
@@ -8,6 +8,28 @@ interface CartItemProps {
 
 export const CartItem = ({ prod }: CartItemProps) => {
   const cartState = useCartState();
+  const [amount, setAmount] = useState(prod.amount);
+
+  useEffect(() => {
+    setAmount(prod.amount);
+  }, [prod.amount]);
+
+  const decreaseAmount = (e) => {
+    e.preventDefault();
+    if (amount > 1) {
+      const prodNum = amount - 1;
+      setAmount(prodNum);
+    }
+    if (amount === 1) cartState.removeItemFromCart(prod.id);
+  };
+
+  const increaseAmount = (e) => {
+    e.preventDefault();
+    cartState.addItemToCart({
+      ...prod,
+      amount: amount,
+    });
+  };
 
   return (
     <li className="flex items-center gap-4 responsive">
@@ -40,25 +62,55 @@ export const CartItem = ({ prod }: CartItemProps) => {
       </div>
 
       <div className="flex flex-1 items-center justify-end gap-2">
-        <form className="flex text-lg">
-          <label htmlFor="Line1Qty" className="sr-only">
-            {" "}
-            Quantity{" "}
-          </label>
+        <div className="flex justify-center items-center text-lg">
+          <div className="inline-flex items-center justify-center mr-2 overflow-hidden rounded-xs border bg-gray-50 shadow-sm">
+            <button
+              onClick={decreaseAmount}
+              className="block px-2 h-8 border-e hover:bg-gray-100"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 12h-15"
+                />
+              </svg>
+            </button>
 
-          <input
-            type="number"
-            min="1"
-            value={prod.amount}
-            id="Line1Qty"
-            className="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-          />
+            <p className="w-8 order-gray-200 bg-gray-50 p-0 text-center text-base text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none">
+              {amount}
+            </p>
+            <button
+              onClick={increaseAmount}
+              className="block px-2 h-8 leading-none border-e hover:bg-gray-100"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 4.5v15m7.5-7.5h-15"
+                />
+              </svg>
+            </button>
+          </div>
           <p className="text-lg font-bold text-zinc-700 flex justify-between items-center">{`${
-            prod.newPrice
-              ? prod.newPrice * prod.amount
-              : prod.price * prod.amount
+            prod.newPrice ? prod.newPrice * amount : prod.price * amount
           } EUR`}</p>
-        </form>
+        </div>
 
         <button
           onClick={() => cartState.removeItemFromCart(prod.id)}
