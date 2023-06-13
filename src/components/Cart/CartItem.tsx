@@ -1,6 +1,7 @@
 import React, { useState, useEffect, ChangeEvent, MouseEvent } from "react";
 import Image from "next/image";
 import { CartItem as CartItemTypes, useCartState } from "./CartContext";
+import Link from "next/link";
 
 interface CartItemProps {
   prod: CartItemTypes;
@@ -47,7 +48,9 @@ export const CartItem = ({ prod }: CartItemProps) => {
         crossOrigin="anonymous"
       />
       <div>
-        <h3 className="text-lg text-gray-900">{prod.title}</h3>
+        <Link href={`/products/${prod.id}`}>
+          <h3 className="text-lg text-gray-900">{prod.title}</h3>
+        </Link>
         <div className="mt-0.5 space-y-px text-md text-gray-600">
           {prod?.size && (
             <div>
