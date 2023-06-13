@@ -5,7 +5,7 @@ export interface ProductDetailsProps {
   description: string;
   longDescription: string;
   title: string;
-  price: string;
+  price: number;
   newPrice?: number;
   discount?: string;
   images: {

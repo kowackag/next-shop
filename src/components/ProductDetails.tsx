@@ -6,6 +6,7 @@ import { ColorBox } from "./ColorBox/ColorBox";
 import { ProductDetailsProps } from "src/constans/types";
 import ReactMarkdown from "react-markdown";
 import { NextSeo } from "next-seo";
+import { useCartState } from "./Cart/CartContext";
 
 export const ProductDetails = ({
   id,
@@ -19,6 +20,7 @@ export const ProductDetails = ({
   images,
   longDescription,
 }: ProductDetailsProps) => {
+  const cartState = useCartState();
   return (
     <section>
       <div className="relative mx-auto max-w-screen-xl px-4 py-8 text-zinc-800">
@@ -71,7 +73,21 @@ export const ProductDetails = ({
                     className="w-12 rounded border-gray-200 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                   />
                 </div>
-                <button className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white">
+                <button
+                  onClick={() =>
+                    cartState.addItemToCart({
+                      price: price,
+                      newPrice: newPrice,
+                      id: id,
+                      title: title,
+                      amount: 1,
+                      color: colors && colors[0],
+                      size: sizes && sizes[0],
+                      image: images[0],
+                    })
+                  }
+                  className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white"
+                >
                   Add to Cart
                 </button>
               </div>

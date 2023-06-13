@@ -7,6 +7,7 @@ const nextConfig = {
       "images.unsplash.com",
       "picsum.photos",
       "naszsklep-api.vercel.app",
+      "media.graphassets.com",
     ],
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
@@ -25,6 +26,12 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "naszsklep-api.vercel.app",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "media.graphassets.com",
         port: "",
         pathname: "/**",
       },
