@@ -15,25 +15,29 @@ export const CartItem = ({ prod }: CartItemProps) => {
     setAmount(prod.amount);
   }, [prod.amount]);
 
+  // useEffect(() => {
+  //   cartState.addItemToCart({
+  //     ...prod,
+  //     amount: amount,
+  //   });
+  // }, [prod, amount]);
+
   const decreaseAmount = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (amount > 1) {
-      const prodNum = amount - 1;
-      setAmount(prodNum);
-    }
+    if (prod.amount > 1) cartState.decreaseItemInCart(prod);
   };
 
   const increaseAmount = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    cartState.addItemToCart({
-      ...prod,
-      amount: amount,
-    });
+    cartState.addItemToCart(prod);
   };
 
   const changeAmount = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setAmount(Number(e.currentTarget.value));
+    cartState.changeAmountItemInCart({
+      ...prod,
+      amount: Number(e.currentTarget.value),
+    });
   };
 
   return (
@@ -44,7 +48,7 @@ export const CartItem = ({ prod }: CartItemProps) => {
         width={70}
         height={70}
         unoptimized={true}
-        className="object-contain h-auto"
+        className="object-contain h-auto hidden sm:inline-block"
         crossOrigin="anonymous"
       />
       <div>
@@ -121,7 +125,7 @@ export const CartItem = ({ prod }: CartItemProps) => {
               </svg>
             </button>
           </div>
-          <p className="text-lg font-bold text-zinc-700 flex justify-between items-center">{`${
+          <p className="w-24 text-lg text-zinc-700 text-end">{`${
             prod.newPrice ? prod.newPrice * amount : prod.price * amount
           } EUR`}</p>
         </form>

@@ -31,8 +31,8 @@ const CartPage = () => {
                 <div className="w-screen max-w-lg space-y-4">
                   <dl className="space-y-0.5 text-sm text-gray-700">
                     <div className="flex justify-between !text-base font-medium">
-                      <p className="text-[20px]">Total Price</p>
-                      <p>{cartState.totalPrice} EUR</p>
+                      <p>Total Price</p>
+                      <p className="text-[20px]">{cartState.totalPrice} EUR</p>
                     </div>
                   </dl>
 
@@ -54,7 +54,7 @@ const CartPage = () => {
                         />
                       </svg>
 
-                      <p className="whitespace-nowrap text-xs">
+                      <p className="whitespace-nowrap text-xs ">
                         2 Discounts Applied
                       </p>
                     </span>

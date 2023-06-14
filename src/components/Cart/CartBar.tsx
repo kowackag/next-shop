@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useCartState } from "./CartContext";
 
 export const CartBar = () => {
   const cartState = useCartState();
   const { items } = cartState;
+  const totalProduct = items.reduce(
+    (acc, curr) => Number(acc) + curr.amount,
+    0
+  );
+
   return (
     <li className=" hover:text-zinc-800 mx-3 relative">
       <div className="hover:cursor-pointer">
@@ -24,7 +29,7 @@ export const CartBar = () => {
       </div>
       {items && items.length > 0 && (
         <div className="bg-red-700 rounded-full text-[10px] w-5 h-5 absolute top-5 left-3 font-bold text-white flex items-center justify-center">
-          {items.length}
+          {totalProduct}
         </div>
       )}
     </li>

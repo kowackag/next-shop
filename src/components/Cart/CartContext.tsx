@@ -23,6 +23,8 @@ export type CartItem = {
 interface CartState {
   readonly items: readonly CartItem[];
   readonly addItemToCart: (product: CartItem) => void;
+  readonly decreaseItemInCart: (product: CartItem) => void;
+  readonly changeAmountItemInCart: (product: CartItem) => void;
   readonly removeItemFromCart: (id: CartItem["id"]) => void;
   readonly totalPrice: number;
 }
@@ -79,6 +81,39 @@ export const CartStateContextProvider = ({
                 ...existingItem,
                 amount: existingItem.amount + 1,
               };
+              return prevState.map((el) =>
+                el.id === existingItem.id ? newItem : el
+              );
+            }
+          });
+        },
+        decreaseItemInCart: (item) => {
+          setCartItems((prevState) => {
+            const existingItem = prevState.find((el) => el.id === item.id);
+            if (!existingItem) {
+              return [...prevState, item];
+            } else {
+              const newItem = {
+                ...existingItem,
+                amount: existingItem.amount - 1,
+              };
+              return prevState.map((el) =>
+                el.id === existingItem.id ? newItem : el
+              );
+            }
+          });
+        },
+        changeAmountItemInCart: (item) => {
+          setCartItems((prevState) => {
+            const existingItem = prevState.find((el) => el.id === item.id);
+            if (!existingItem) {
+              return [...prevState, item];
+            } else {
+              const newItem = {
+                ...existingItem,
+                amount: item.amount,
+              };
+
               return prevState.map((el) =>
                 el.id === existingItem.id ? newItem : el
               );
