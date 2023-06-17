@@ -1,7 +1,4 @@
-import Image from "next/image";
 import { Main } from "src/components/Main";
-import { gql, useQuery } from "@apollo/client";
-import { apolloClient } from "src/graphql/apolloClient";
 import {
   CreateProductReviewDocument,
   CreateProductReviewMutation,
@@ -16,35 +13,7 @@ const DATA = {
   rating: 4.8,
 };
 
-interface ProductProps {
-  data: {
-    description: string;
-    thumbnailUrl: string;
-    thumbnailAlt: string;
-    rating: number;
-  };
-}
-
 const Product = () => {
-  // const { data: products } = useQuery(gql`
-  //   query Assets {
-  //     products {
-  //       id
-  //       description
-  //       slug
-  //       name
-  //       price
-  //       images {
-  //         url
-  //         width
-  //         height
-  //       }
-  //     }
-  //   }
-  // `);
-  // if (data) {
-  //   console.log(products);
-  // }
   const [createReview, { data, loading, error }] =
     useCreateProductReviewMutation();
 
@@ -66,13 +35,6 @@ const Product = () => {
       <button onClick={addReview} type="button">
         Add review
       </button>
-      {/* <Image
-        src={data.thumbnailUrl}
-        alt={data.thumbnailAlt}
-        width={1000}
-        height={1000}
-        crossOrigin="anonymous"
-      /> */}
       <div>
         {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
         {error && <pre>{JSON.stringify(error, null, 2)}</pre>}

@@ -76,6 +76,7 @@ export const CartItem = ({ prod }: CartItemProps) => {
         <form className="flex justify-center items-center text-lg">
           <div className="inline-flex items-center justify-center mr-2 overflow-hidden rounded-xs border bg-gray-50 shadow-sm">
             <button
+              type="button"
               onClick={decreaseAmount}
               className={`block px-2 h-8 border-e ${
                 amount === 1 ? " opacity-50" : "hover:bg-gray-100"
@@ -106,6 +107,7 @@ export const CartItem = ({ prod }: CartItemProps) => {
             />
 
             <button
+              type="button"
               onClick={increaseAmount}
               className="block px-2 h-8 leading-none border-e hover:bg-gray-100"
             >
@@ -131,6 +133,7 @@ export const CartItem = ({ prod }: CartItemProps) => {
         </form>
 
         <button
+          type="button"
           onClick={() => cartState.removeItemFromCart(prod.id)}
           className="text-gray-600 transition pl-4 hover:text-red-700"
         >

@@ -1,5 +1,5 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
   // "import/no-anonymous-default-export": [
   //   "error",
   //   {
@@ -13,4 +13,11 @@
   //     "allowObject": false
   //   }
   // ]
+  "rules": {
+    // for security reasons, always require buttons to provide type="button" ("submit" on rare occasions)
+    "react/button-has-type": [
+      "error",
+      { "button": true, "submit": true, "reset": false }
+    ]
+  }
 }

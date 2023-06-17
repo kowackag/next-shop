@@ -98,6 +98,7 @@ export const Product = ({
       </Link>
       <div className="mx-auto">
         <button
+          type="button"
           onClick={() =>
             cartState.addItemToCart({
               price: price,

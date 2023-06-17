@@ -167,6 +167,7 @@ export const CheckoutForms = () => {
 
           <div className="col-span-2 py-6">
             <button
+              type="submit"
               className={`block w-full rounded-md ${
                 isValid
                   ? "bg-sky-800 hover:opacity-100 transition-opacity duration-500 hover:shadow-lg"

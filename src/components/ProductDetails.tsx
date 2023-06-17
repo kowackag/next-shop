@@ -74,6 +74,7 @@ export const ProductDetails = ({
                   />
                 </div>
                 <button
+                  type="button"
                   onClick={() =>
                     cartState.addItemToCart({
                       price: price,
