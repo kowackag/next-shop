@@ -3,10 +3,11 @@ import { PriceBox } from "src/components/PriceBox/PriceBox";
 import { ImageBox } from "src/components/ImageBox/ImageBox";
 import { SizeBox } from "src/components/SizeBox/SizeBox";
 import { ColorBox } from "./ColorBox/ColorBox";
-import { ProductDetailsProps } from "src/constans/types";
+import { ProductDetailsProps } from "src/common/constans/types";
 import ReactMarkdown from "react-markdown";
 import { NextSeo } from "next-seo";
 import { useCartState } from "./Cart/CartContext";
+import { MainButton } from "src/common/components/MainButton/MainButton";
 
 export const ProductDetails = ({
   id,
@@ -21,6 +22,20 @@ export const ProductDetails = ({
   longDescription,
 }: ProductDetailsProps) => {
   const cartState = useCartState();
+
+  const addItemToCart = () => {
+    cartState.addItemToCart({
+      price: price,
+      newPrice: newPrice,
+      id: id,
+      title: title,
+      amount: 1,
+      color: colors && colors[0],
+      size: sizes && sizes[0],
+      image: images[0],
+    });
+  };
+
   return (
     <section>
       <div className="relative mx-auto max-w-screen-xl px-4 py-8 text-zinc-800">
@@ -70,27 +85,12 @@ export const ProductDetails = ({
                     type="number"
                     id="quantity"
                     min="1"
-                    className="w-12 rounded border-gray-200 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
+                    className="w-12 rounded border-zinc-200 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                   />
                 </div>
-                <button
-                  type="button"
-                  onClick={() =>
-                    cartState.addItemToCart({
-                      price: price,
-                      newPrice: newPrice,
-                      id: id,
-                      title: title,
-                      amount: 1,
-                      color: colors && colors[0],
-                      size: sizes && sizes[0],
-                      image: images[0],
-                    })
-                  }
-                  className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white"
-                >
+                <MainButton type="button" onClick={addItemToCart}>
                   Add to Cart
-                </button>
+                </MainButton>
               </div>
             </div>
           </div>
