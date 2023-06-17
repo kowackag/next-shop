@@ -21,10 +21,22 @@ export const CheckoutForms = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid, touchedFields },
   } = useForm<CheckoutForm>({ mode: "all", resolver: yupResolver(schema) });
-  const onSubmit = handleSubmit((data) => console.log(data));
-  console.log(555, touchedFields.email);
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+    reset({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      cardNumber: "",
+      cardExpiry: "",
+      cardCVC: "",
+    });
+  });
+
   return (
     <div className="bg-white py-6 my-6 mx-6">
       <h3 className="font-bold text-xl mb-8 text-center text-zinc-800">

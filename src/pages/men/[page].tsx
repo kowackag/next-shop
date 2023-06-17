@@ -150,8 +150,7 @@ export const getStaticProps = async ({
 //   const data: ApiDataType[] = await res.json();
 //   return {
 //     paths: data.map((item) => {
-//       console.log();
-//       return {
+//      return {
 //         params: {
 //           prodId: item.id,
 //         },
