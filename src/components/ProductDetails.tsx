@@ -1,13 +1,13 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
+import { NextSeo } from "next-seo";
 import { PriceBox } from "src/components/PriceBox/PriceBox";
 import { ImageBox } from "src/components/ImageBox/ImageBox";
 import { SizeBox } from "src/components/SizeBox/SizeBox";
-import { ColorBox } from "./ColorBox/ColorBox";
 import { ProductDetailsProps } from "src/common/constans/types";
-import ReactMarkdown from "react-markdown";
-import { NextSeo } from "next-seo";
-import { useCartState } from "./Cart/CartContext";
 import { MainButton } from "src/common/components/MainButton/MainButton";
+import { ColorBox } from "./ColorBox/ColorBox";
+import { useCartState } from "./Cart/CartContext";
 
 export const ProductDetails = ({
   id,

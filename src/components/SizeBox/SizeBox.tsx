@@ -1,5 +1,5 @@
 import React from "react";
-import { Size } from "../Size/Size";
+import { Size } from "./Size/Size";
 
 interface SizeBoxProps {
   sizes: string[];

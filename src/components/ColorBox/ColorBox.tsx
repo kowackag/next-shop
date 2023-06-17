@@ -1,5 +1,5 @@
 import React from "react";
-import { Color } from "src/components/Color/Color";
+import { Color } from "src/components/ColorBox/Color/Color";
 
 interface ColorBoxProps {
   colors: string[];

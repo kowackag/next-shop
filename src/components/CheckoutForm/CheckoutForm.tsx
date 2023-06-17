@@ -8,7 +8,7 @@ interface CheckoutForm {
   firstName: string;
   lastName: string;
   email: string;
-  phone: number;
+  phone: string;
   cardNumber: string;
   cardExpiry: string;
   cardCVC: string;
@@ -128,7 +128,7 @@ export const CheckoutForms = () => {
             />
           </div>
           {/* <fieldset className="col-span-2">
-            <legend className="block text-sm font-medium text-gray-700">
+            <legend className="block text-sm font-medium text-zinc-700">
               Billing Address
             </legend>
             <div className="mt-1 space-y-px rounded-md bg-white shadow-sm">
@@ -139,7 +139,7 @@ export const CheckoutForms = () => {
 
                 <select
                   id="country"
-                  className="relative w-full rounded-t-md border-gray-200 focus:z-10 sm:text-sm"
+                  className="relative w-full rounded-t-md border-zinc-200 focus:z-10 sm:text-sm"
                   {...register("country")}
                 >
                   <option>England</option>

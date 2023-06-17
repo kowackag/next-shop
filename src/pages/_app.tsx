@@ -1,11 +1,12 @@
 import React from "react";
-import "../styles/globals.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { AppProps } from "next/app";
+import { ApolloProvider } from "@apollo/client";
 import { Layout } from "src/components/Layout";
 import { CartStateContextProvider } from "src/components/Cart/CartContext";
-import { ApolloProvider } from "@apollo/client";
 import { apolloClient } from "src/graphql/apolloClient";
+import "../styles/globals.css";
+
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {

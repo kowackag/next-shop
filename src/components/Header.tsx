@@ -1,5 +1,5 @@
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { IconsBox } from "./IconsBox";
 
@@ -9,7 +9,7 @@ export const Header = () => {
   const links = [
     { title: "Home", href: "/home", page: "" },
     { title: "Products", href: "/products", page: "" },
-    { title: "Inspiration", href: "/inspiration", page: "" },
+    { title: "Inspirations", href: "/inspirations", page: "" },
     { title: "Shops", href: "/shops", page: "" },
   ];
 

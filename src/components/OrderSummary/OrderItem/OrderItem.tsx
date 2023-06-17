@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { CartItem } from "../Cart/CartContext";
+import { CartItem } from "src/components/Cart/CartContext";
 
 export const OrderItem = ({
   image,
@@ -18,9 +18,9 @@ export const OrderItem = ({
       />
 
       <div>
-        <h3 className="text-sm text-gray-900">{title}</h3>
+        <h3 className="text-sm text-zinc-900">{title}</h3>
 
-        <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
+        <dl className="mt-0.5 space-y-px text-[10px] text-zinc-600">
           <div>
             <dt className="inline">Quantity: </dt>
             <dd className="inline">{amount}</dd>

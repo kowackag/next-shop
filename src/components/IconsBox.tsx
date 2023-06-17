@@ -1,11 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { CartBar } from "./Cart/CartBar";
 
 export const IconsBox = () => {
-  const router = useRouter();
-
   return (
     <ul className="px-4 py-2 bg-slate-50 text-2xl text-zinc-400 uppercase flex justify-between">
       <Link href="/cart">

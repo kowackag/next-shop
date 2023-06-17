@@ -1,9 +1,9 @@
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
 
 export const NewHeader = () => {
   return (
-    <header aria-label="Site Header" className="border-b border-gray-100">
+    <header aria-label="Site Header" className="border-b border-zinc-100">
       <div className="mx-auto flex h-16 max-w-screen-2xl items-center justify-between sm:px-6 lg:px-8">
         <div className="flex items-center gap-4">
           <button type="button" className="p-2 lg:hidden">
@@ -31,7 +31,7 @@ export const NewHeader = () => {
         <div className="flex flex-1 items-center justify-end gap-8">
           <nav
             aria-label="Site Nav"
-            className="hidden lg:flex lg:gap-4 lg:text-xs lg:font-bold lg:uppercase lg:tracking-wide lg:text-gray-500"
+            className="hidden lg:flex lg:gap-4 lg:text-xs lg:font-bold lg:uppercase lg:tracking-wide lg:text-zinc-500"
           >
             <Link
               href="/about"
@@ -62,7 +62,7 @@ export const NewHeader = () => {
           </nav>
 
           <div className="flex items-center">
-            <div className="flex items-center divide-x divide-gray-100 border-x border-gray-100">
+            <div className="flex items-center divide-x divide-zinc-100 border-x border-zinc-100">
               <span>
                 <Link
                   href="/cart"

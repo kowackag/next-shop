@@ -1,5 +1,5 @@
-import { InferGetStaticPropsType } from "next";
 import React, { useEffect, useState } from "react";
+import { InferGetStaticPropsType } from "next";
 import { Pagination } from "src/components/Pagination/Pagination";
 import { Product } from "src/components/Product";
 import { apolloClient } from "src/graphql/apolloClient";

@@ -43,17 +43,7 @@ const nextConfig = {
         source: "/",
         destination: "/home",
         permanent: true,
-      },
-      {
-        source: "/women",
-        destination: "/women/1",
-        permanent: true,
-      },
-      {
-        source: "/men",
-        destination: "/men/1",
-        permanent: true,
-      },
+      }
     ];
   },
 };
