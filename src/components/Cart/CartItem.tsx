@@ -70,6 +70,7 @@ export const CartItem = ({ prod }: CartItemProps) => {
           <div className="inline-flex items-center justify-center mr-2 overflow-hidden rounded-xs border bg-zinc-50 shadow-sm">
             <button
               type="button"
+              aria-label="minus"
               onClick={decreaseAmount}
               className={`block px-2 h-8 border-e ${
                 amount === 1 ? " opacity-50" : "hover:bg-zinc-100"
@@ -91,10 +92,13 @@ export const CartItem = ({ prod }: CartItemProps) => {
                 />
               </svg>
             </button>
-
+            <label htmlFor="quantity" className="sr-only">
+              quantity
+            </label>
             <input
               type="number"
               value={amount}
+              id="quantity"
               onChange={changeAmount}
               className="w-8 order-zinc-200 bg-zinc-50 p-0 text-center text-base text-zinc-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
             />
@@ -102,6 +106,7 @@ export const CartItem = ({ prod }: CartItemProps) => {
             <button
               type="button"
               onClick={increaseAmount}
+              aria-label="plus"
               className="block px-2 h-8 leading-none border-e hover:bg-zinc-100"
             >
               <svg
