@@ -63,6 +63,7 @@ const CartPage = () => {
                   <div className="flex justify-end">
                     <Link
                       href="checkout"
+                      aria-label="Go to checkout"
                       className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white opacity-80 hover:opacity-100 transition-opacity duration-500"
                     >
                       Checkout

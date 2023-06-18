@@ -19,11 +19,12 @@ export const Header = () => {
         <p className="tracking-wider align-top">eminent</p>
       </div>
       <nav className="hidden lg:flex lg:w-1/2">
-        <ul className="px-4 py-2 bg-slate-50 text-xl text-zinc-400 uppercase flex justify-between w-full">
+        <ul className="px-4 py-2 bg-slate-50 text-xl text-zinc-500 uppercase flex justify-between w-full">
           {links.map(({ href, page, title }) => (
             <li className=" hover:text-zinc-800 " key={href}>
               <Link
                 href={`${href}/${page}`}
+                aria-label={`Open the ${title} page`}
                 className={
                   router.pathname.startsWith(href) ? "text-zinc-800" : ""
                 }

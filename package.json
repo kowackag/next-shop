@@ -10,6 +10,18 @@
     "codegen": "graphql-codegen --config codegen.ts",
     "generate-graphql": "graphql-codegen --config codegen.yml"
   },
+  "exports": "./src/pages/_document.tsx",
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "useBuiltIns": false,
+          "targets": "Chrome >= 60, Safari >= 10.1, iOS >= 10.3, Firefox >= 54, Edge >= 15"
+        }
+      }
+    ]
+  ],
   "dependencies": {
     "@apollo/client": "^3.7.13",
     "@graphql-codegen/typescript": "^4.0.0",

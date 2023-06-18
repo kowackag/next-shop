@@ -10,7 +10,7 @@ export const CartBar = () => {
   );
 
   return (
-    <li className=" hover:text-zinc-800 mx-3 relative">
+    <>
       <div className="hover:cursor-pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -32,6 +32,6 @@ export const CartBar = () => {
           {totalProduct}
         </div>
       )}
-    </li>
+    </>
   );
 };

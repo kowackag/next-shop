@@ -95,8 +95,9 @@ export const getStaticProps = async ({
     props: {
       data: {
         ...data.product,
-        longDescription: await data.product.description,
+        longDescription: data.product.description,
       },
     },
+    revalidate: 10,
   };
 };
