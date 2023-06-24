@@ -1,15 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { CartBar } from "./Cart/CartBar";
 
 export const IconsBox = () => {
-  const router = useRouter();
-
   return (
     <ul className="px-4 py-2 bg-slate-50 text-2xl text-zinc-400 uppercase flex justify-between">
-      <Link href="/cart">
-        <li className=" hover:text-zinc-800 mx-3">
+      <li className=" hover:text-zinc-800 mx-3">
+        <Link href="/cart" aria-label="Search products">
           <div className="hover:cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -26,10 +23,10 @@ export const IconsBox = () => {
               />
             </svg>
           </div>
-        </li>
-      </Link>
-      <Link href="/cart">
-        <li className=" hover:text-zinc-800 mx-3">
+        </Link>
+      </li>
+      <li className=" hover:text-zinc-800 mx-3">
+        <Link href="/cart" aria-label="See favourite products">
           <div className="hover:cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -46,11 +43,13 @@ export const IconsBox = () => {
               />
             </svg>
           </div>
-        </li>
-      </Link>
-      <Link href="/cart">
-        <CartBar />
-      </Link>
+        </Link>{" "}
+      </li>{" "}
+      <li className="hover:text-zinc-800 mx-3 relative">
+        <Link href="/cart" aria-label="Go to cart">
+          <CartBar />
+        </Link>
+      </li>
     </ul>
   );
 };

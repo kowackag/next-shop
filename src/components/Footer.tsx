@@ -7,11 +7,11 @@ export const Footer = () => {
         <p className="tracking-wider align-top">eminent</p>
       </div>
       <nav className="hidden lg:flex lg:w-1/2">
-        <ul className="px-4 py-2 bg-slate-50 text-xl text-zinc-400 uppercase flex justify-between w-full">
+        <ul className="px-4 py-2 bg-slate-50 text-xl text-zinc-500 uppercase flex justify-between w-full">
+          <li className=" hover:text-zinc-800 ">contact</li>
           <li className=" hover:text-zinc-800 ">contact</li>
         </ul>
       </nav>
-      <div className="flex"></div>
     </footer>
   );
 };

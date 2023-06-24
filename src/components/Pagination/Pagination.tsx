@@ -13,7 +13,7 @@ export const Pagination = ({ path, length }: PaginationProps) => {
   const linkArr = createLinkArr(Number(query.page), length, path);
 
   return (
-    <nav className="border-t border-gray-200 mt-6 px-4 flex items-center justify-between align-middle sm:px-0">
+    <nav className="border-t border-zinc-200 mt-6 px-4 flex items-center justify-between align-middle sm:px-0">
       <ul className="hidden mx-auto md:-mt-px md:flex">
         {linkArr.map((item) => (
           <li key={item.href} data-page={item.num}>

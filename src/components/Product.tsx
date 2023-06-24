@@ -2,6 +2,7 @@ import React, { useState, MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCartState } from "./Cart/CartContext";
+import { MainButton } from "src/common/components/MainButton/MainButton";
 
 interface ProductProps {
   id: string;
@@ -34,6 +35,19 @@ export const Product = ({
   const addToFavourite = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsFavouriteList(!isFavouriteList);
+  };
+
+  const addItemToCart = () => {
+    cartState.addItemToCart({
+      price: price,
+      newPrice: newPrice,
+      id: id,
+      title: title,
+      amount: 1,
+      color: colors && colors[0],
+      size: sizes && sizes[0],
+      image: image[0],
+    });
   };
 
   return (
@@ -89,31 +103,17 @@ export const Product = ({
               discount ? "line-through" : ""
             }`}
           >
-            {price}
+            {`${price} EUR`}
           </p>
           {newPrice && (
-            <p className="mt-1.5 px-1 font-bold text-red-700">{newPrice}</p>
+            <p className="mt-1.5 px-1 font-bold text-red-700">{`${newPrice} EUR`}</p>
           )}
         </div>
       </Link>
       <div className="mx-auto">
-        <button
-          onClick={() =>
-            cartState.addItemToCart({
-              price: price,
-              newPrice: newPrice,
-              id: id,
-              title: title,
-              amount: 1,
-              color: colors && colors[0],
-              size: sizes && sizes[0],
-              image: image[0],
-            })
-          }
-          className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white opacity-80 hover:opacity-100 transition-opacity duration-500"
-        >
+        <MainButton type="button" onClick={addItemToCart}>
           Add to Cart
-        </button>
+        </MainButton>
       </div>
     </div>
   );

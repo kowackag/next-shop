@@ -25,7 +25,7 @@ export const FormInput = ({
     <div className="relative">
       <label
         htmlFor={id}
-        className={`block text-sm font-medium pt-2 text-gray-700 ${
+        className={`block text-sm font-medium pt-2 text-zinc-700 ${
           !isValid && touched && "text-red-700"
         }`}
       >
@@ -40,7 +40,7 @@ export const FormInput = ({
         autoComplete={autoComplete}
         className={`mt-1 w-full py-1 px-2 rounded-sm ${
           !touched
-            ? "border-gray-200 border-solid border-2"
+            ? "border-zinc-200 border-solid border-2"
             : isValid
             ? "border-sky-700 border-solid border-2"
             : "border-red-700 border-solid border-2"

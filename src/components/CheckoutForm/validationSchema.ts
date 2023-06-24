@@ -6,7 +6,7 @@ import {
   expiryCardFormatRegex,
   onlyLettersAndDashRegex,
   onlyLettersRegex,
-} from "src/constans/regex";
+} from "src/common/constans/regex";
 import { compareAsc } from "date-fns";
 
 export const schema = yup.object({

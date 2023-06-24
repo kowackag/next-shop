@@ -9,6 +9,8 @@ const nextConfig = {
       "naszsklep-api.vercel.app",
       "media.graphassets.com",
     ],
+    minimumCacheTTL: 60,
+    disableStaticImages: true,
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
@@ -42,16 +44,6 @@ const nextConfig = {
       {
         source: "/",
         destination: "/home",
-        permanent: true,
-      },
-      {
-        source: "/women",
-        destination: "/women/1",
-        permanent: true,
-      },
-      {
-        source: "/men",
-        destination: "/men/1",
         permanent: true,
       },
     ];

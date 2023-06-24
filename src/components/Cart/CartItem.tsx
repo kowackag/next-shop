@@ -1,7 +1,7 @@
 import React, { useState, useEffect, ChangeEvent, MouseEvent } from "react";
 import Image from "next/image";
-import { CartItem as CartItemTypes, useCartState } from "./CartContext";
 import Link from "next/link";
+import { CartItem as CartItemTypes, useCartState } from "./CartContext";
 
 interface CartItemProps {
   prod: CartItemTypes;
@@ -14,13 +14,6 @@ export const CartItem = ({ prod }: CartItemProps) => {
   useEffect(() => {
     setAmount(prod.amount);
   }, [prod.amount]);
-
-  // useEffect(() => {
-  //   cartState.addItemToCart({
-  //     ...prod,
-  //     amount: amount,
-  //   });
-  // }, [prod, amount]);
 
   const decreaseAmount = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -53,9 +46,9 @@ export const CartItem = ({ prod }: CartItemProps) => {
       />
       <div>
         <Link href={`/products/${prod.id}`}>
-          <h3 className="text-lg text-gray-900">{prod.title}</h3>
+          <h3 className="text-lg text-zinc-900">{prod.title}</h3>
         </Link>
-        <div className="mt-0.5 space-y-px text-md text-gray-600">
+        <div className="mt-0.5 space-y-px text-md text-zinc-600">
           {prod?.size && (
             <div>
               <p className="inline">Size: </p>
@@ -74,11 +67,13 @@ export const CartItem = ({ prod }: CartItemProps) => {
 
       <div className="flex flex-1 items-center justify-end gap-2">
         <form className="flex justify-center items-center text-lg">
-          <div className="inline-flex items-center justify-center mr-2 overflow-hidden rounded-xs border bg-gray-50 shadow-sm">
+          <div className="inline-flex items-center justify-center mr-2 overflow-hidden rounded-xs border bg-zinc-50 shadow-sm">
             <button
+              type="button"
+              aria-label="minus"
               onClick={decreaseAmount}
               className={`block px-2 h-8 border-e ${
-                amount === 1 ? " opacity-50" : "hover:bg-gray-100"
+                amount === 1 ? " opacity-50" : "hover:bg-zinc-100"
               } `}
               disabled={amount === 1}
             >
@@ -97,17 +92,22 @@ export const CartItem = ({ prod }: CartItemProps) => {
                 />
               </svg>
             </button>
-
+            <label htmlFor={`quantity-${prod.title}`} className="sr-only">
+              {`quantity of ${prod.title}`}
+            </label>
             <input
               type="number"
               value={amount}
+              id={`quantity-${prod.title}`}
               onChange={changeAmount}
-              className="w-8 order-gray-200 bg-gray-50 p-0 text-center text-base text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+              className="w-8 order-zinc-200 bg-zinc-50 p-0 text-center text-base text-zinc-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
             />
 
             <button
+              type="button"
               onClick={increaseAmount}
-              className="block px-2 h-8 leading-none border-e hover:bg-gray-100"
+              aria-label="plus"
+              className="block px-2 h-8 leading-none border-e hover:bg-zinc-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -131,8 +131,9 @@ export const CartItem = ({ prod }: CartItemProps) => {
         </form>
 
         <button
+          type="button"
           onClick={() => cartState.removeItemFromCart(prod.id)}
-          className="text-gray-600 transition pl-4 hover:text-red-700"
+          className="text-zinc-600 transition pl-4 hover:text-red-700"
         >
           <span className="sr-only">Remove item</span>
 

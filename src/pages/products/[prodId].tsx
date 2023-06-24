@@ -1,9 +1,9 @@
 import React from "react";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
-import { ProductDetails } from "src/components/ProductDetails";
-import { InferGetStaticPathsType } from "src/constans/types";
 import Head from "next/head";
 import Link from "next/link";
+import { ProductDetails } from "src/components/ProductDetails";
+import { InferGetStaticPathsType } from "src/common/constans/types";
 import { apolloClient } from "src/graphql/apolloClient";
 
 import {
@@ -95,8 +95,9 @@ export const getStaticProps = async ({
     props: {
       data: {
         ...data.product,
-        longDescription: await data.product.description,
+        longDescription: data.product.description,
       },
     },
+    revalidate: 10,
   };
 };

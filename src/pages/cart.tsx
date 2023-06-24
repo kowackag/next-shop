@@ -1,7 +1,7 @@
+import React from "react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { useCartState } from "src/components/Cart/CartContext";
 import { CartItem } from "src/components/Cart/CartItem";
+import { useCartState } from "src/components/Cart/CartContext";
 
 const CartPage = () => {
   const cartState = useCartState();
@@ -10,7 +10,7 @@ const CartPage = () => {
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <header className="text-center">
-            <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">
+            <h2 className="text-xl font-bold text-zinc-900 sm:text-3xl">
               Your Cart
             </h2>
           </header>
@@ -27,9 +27,9 @@ const CartPage = () => {
             )}
 
             {cartState && cartState.items.length > 0 && (
-              <div className="mt-8 flex justify-end border-t border-gray-100 pt-8">
+              <div className="mt-8 flex justify-end border-t border-zinc-100 pt-8">
                 <div className="w-screen max-w-lg space-y-4">
-                  <dl className="space-y-0.5 text-sm text-gray-700">
+                  <dl className="space-y-0.5 text-sm text-zinc-700">
                     <div className="flex justify-between !text-base font-medium">
                       <p>Total Price</p>
                       <p className="text-[20px]">{cartState.totalPrice} EUR</p>
@@ -63,6 +63,7 @@ const CartPage = () => {
                   <div className="flex justify-end">
                     <Link
                       href="checkout"
+                      aria-label="Go to checkout"
                       className="block rounded bg-sky-700 px-5 py-3 text-sm font-medium text-white opacity-80 hover:opacity-100 transition-opacity duration-500"
                     >
                       Checkout
